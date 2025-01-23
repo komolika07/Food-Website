@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&family=Robota:wght@400;500&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --black:#000000;
+    --light-black:#333;
+    --white:#fff;
+    --yellow:#f7be27;
+    --maroon-red:#690c11;
+    --dark-maroon-red:#52090d;
+    --grey:#757575;
+    --light-grey:#eeeeee;
+    --green:rgb(2, 101, 2);
+    --padding-inline-section:2rem;
+}
+body{
+    font-family:'Poppins',sans-serif;
+    color:var(--black);
+}
+h1{
+    font-size: 3.5rem;
+}
+h2{
+    font-size: 3rem;
+}
+h3{
+    font-size: 2.5rem;
+}
+h4{
+    font-size: 1.5rem;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    display: inline-block;
+}
+
+p{
+    font-family: 'Robota' ,sans-serif;
+    font-size: 16px;
+    color:var(--grey);
+    line-height: 1.4rem;
+}
+
+
+/* utility */
+.container{
+    max-width:1550px;
+    /* margin:auto;  */
+    padding-inline: var(--padding-inline-section); 
+}
+
+.Common-sec{
+     background-image: url(../images/feedback-bg.png); 
+    /* background-color: #7A7A7A; */
+    text-align: center;
+    padding:1rem;
+}
+
+.Common-sec h3{
+    color:#fff;
+}
+
+.Common-sec h3 b{
+    Color:#333;
+}
+.Common-sec h3 b:hover{
+    Color:#a4040c;
+}
+
+.Common-sec p{
+    font-size: 1.5rem;
+}
+.Common-sec p a{
+    cursor: pointer;
+    color:black;
+}
+.Common-sec p a:hover{
+    color:#a4040c;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.primary-btn{
+    background-color: var(--maroon-red);
+    color:var(--light-grey);
+    padding: 12px 24px;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 0 2px var(--light-grey);
+    transition: 0.2s ease-in-out;
+    outline: none;
+    border:none;
+}
+.primary-btn:hover{
+    background-color: var(--dark-maroon-red);
+}
+.secondary-btn{
+    background-color: transparent;
+    color:var(--light-black);
+    border:1px solid var(--light-black);
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; 
+}
+.secondary-btn:hover{
+    color:var(--black); 
+    border:2px solid var(--black);
+}
+

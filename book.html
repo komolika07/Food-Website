@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar with Dynamic Content</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li onclick="showSection('personal-info')" id="personal-info-tab" class="active">Personal Information</li>
+                <li onclick="showSection('my-orders')" id="my-orders-tab">My Orders</li>
+                <li onclick="showSection('manage-address')" id="manage-address-tab">Manage Address</li>
+                <li onclick="logout()">Logout</li>
+            </ul>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content">
+            <div id="personal-info" class="section active">
+                <h2>Personal Information</h2>
+                <p>Update your name, email, and other personal details here.</p>
+            </div>
+            <div id="my-orders" class="section">
+                <h2>My Orders</h2>
+                <p>View your past orders and track your current orders here.</p>
+            </div>
+            <div id="manage-address" class="section">
+                <h2>Manage Address</h2>
+                <p>Add, update, or remove your delivery addresses here.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

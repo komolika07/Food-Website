@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    color:black;
+    background: rgba(0,0,0,.8);
+}
+
+.Admin-form-section{
+    display: flex;
+    justify-content: space-between;
+    gap:1rem;
+    height : auto;
+    width:auto;
+    padding:30px 10px;
+    border-radius:30px;
+    align-items: center;
+    margin: auto;
+    background: rgb(255, 255, 255, 255);
+    backdrop-filter: blur(20px);
+    box-shadow: 13px 13px 20px 0px;
+}
+.Admin-Form{
+    height : auto;
+    width:500px;
+    text-align: center;
+    background: rgb(255, 255, 255, 255);
+    backdrop-filter: blur(20px);
+    box-shadow: 13px 13px 20px 0px;
+    padding:30px 10px;
+}
+
+.Admin-content{
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Admin-content img{
+  width:25%;
+}
+.Admin-content span{
+    font-size: 4rem;
+    letter-spacing: 10px;
+    color:#fff;
+    margin-block: 1rem;
+    
+}
+.form-field input,select{
+    width: 80%;
+    background: transparent;
+    border:none;
+    outline:none;
+    font-size: 15px;
+    color: rgb(59, 55, 55);
+    border:1.5px solid rgb(132, 128, 128);
+    border-radius: 20px;
+    padding: 1.2rem;
+    margin-block: 0.5rem;
+}
+.form-field select{
+    width: 85%;
+}
+.form-field i{
+    color:#9f1118;
+    text-shadow: 2px 2px 3px  #4c4c4c;
+    font-size: 1.2rem;
+}
+
+.login-form-btn{
+    width:100%;
+    background-color:#800e13;
+    color:#fff;
+    padding:1rem;
+    outline: none;
+    border:none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.login-form-btn:hover{
+    background-color:#690c11;
+}
+.Forget-pass{
+    margin-block: 0.8rem;
+}
+.Forget-pass a{
+    text-decoration: none;
+    color:#000000;
+    font-size: 1.2rem;
+}
+
+.Error_msg{
+    color:#c91205;
+    padding:14px;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;}

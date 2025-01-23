@@ -1,0 +1,88 @@
+.main-content {
+    margin-left: 250px;
+    margin-top: 60px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    position: relative;
+}
+.main-content a{
+    cursor: pointer;
+    text-decoration: none;
+    color:#000;
+}
+.main-content a:hover{
+   color:#690c11;
+}
+.add-item-form{
+    max-width: 1000px;
+    width: 100%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.add-item-form .alert.success{
+    border:1px solid rgb(2, 60, 2);
+    color:rgb(2, 128, 2);
+    background-color: rgb(200, 238, 200);
+    padding:.8rem;
+    border-radius: 5px;
+}
+.add-item-form .alert.error{
+    border:1px solid rgb(107, 32, 3);
+    color:rgb(161, 32, 3);
+    background-color: rgb(226, 175, 165);
+    padding:.8rem;
+    border-radius: 5px;
+}
+.food-item-group{
+    width:100%;
+    margin-block: 1rem;
+}
+.food-item-group label{
+    display: block;
+    font-weight: bold;
+}
+
+.flex{
+    display: flex;
+    flex-direction: row;
+    gap:1rem;
+}
+.food-item-group input, .food-item-group select, .food-item-group textarea{
+    width:90%;
+    padding:1rem;
+    margin: 1rem;
+}
+.custom-file input[type="file"]{
+    width:70%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+}
+.custom-file{
+    position: relative;
+    width:90%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+.form-actions button{
+    background-color:#800e13;
+    color:#fff;
+    padding:1rem;
+    outline: none;
+    border:none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+
+}
+.form-actions button:hover{
+    background-color:#690c11;
+}

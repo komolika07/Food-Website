@@ -1,0 +1,61 @@
+.Book-table-form{
+    height : auto;
+    width:90%;
+    padding:30px 10px;
+    border-radius:30px;
+    align-items: center;
+    background: rgb(255, 255, 255, 255);
+    backdrop-filter: blur(20px);
+    box-shadow: 13px 13px 20px 0px;
+    margin: auto;
+    margin-block: 3rem;
+    /* overflow: hidden; */
+    /* transition : 2s ease; */
+}
+.Book-table-form h1,p{
+    text-align: center;
+}
+.Book-table-form form{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+}
+
+#book-table-btn{
+    width:100%;
+}
+
+.form-group{
+    padding-inline: 1rem;
+    padding-block: 1rem;
+    width:100%;
+    /* background-color: #f7be27; */
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    font-size: 1.2rem;
+}
+
+.form-group input,select{
+    position: relative;
+    width: 100%;
+    background: transparent;
+    border:none;
+    outline:none;
+    font-size: 15px;
+    color: rgb(59, 55, 55);
+    border:1.5px solid rgb(132, 128, 128);
+    border-radius: 20px;
+    padding: 1.5rem;
+}
+
+.form-group textarea{
+    width:100%;
+    min-height: 100px;
+    height: 20%;
+    outline: none;
+    border:1px solid #333;
+    padding: 1rem;
+}
+

@@ -1,0 +1,183 @@
+.About-Banner{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    gap:1rem;
+    padding: 1rem;
+    background-color: #fce2e3;
+}
+
+.About-Banner .banner-image{
+    background-image: url(../../images/bgg.png);
+    width:500px;
+}
+
+.About-banner-text{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.About-banner-text h4{
+    color:#a4040c;
+   
+}
+.About-banner-text p{
+    margin-block: 1rem;
+    letter-spacing: 1px;
+}
+.About-banner-text img{
+    width:12rem;
+    background-color: #a4040c;
+    padding: 1rem;
+    border-radius: 50px;
+}
+
+.About-team-member{
+    padding-block: 10px;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.About-team-member h2{
+    color:#6d0e13;
+    font-family: "Sofia", sans-serif;
+}
+.About-team-member p{
+    width: 50%;
+}
+
+.grid-container{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    gap: 10px; /*Space between grid items */
+}
+
+.grid-box {
+    text-align: center;
+    border-radius: 5px;
+    font-size: 18px;
+    padding-inline: 70px;
+    padding-top: 70px;
+    padding-bottom: 10px;
+    /* padding-block: 20px; */
+}
+.grid-box img{
+    width:300px;
+    height: 360px;
+}
+
+.grid-box .social-media-icon{
+    margin-top: 20px;
+
+}
+.grid-box .social-media-icon a{
+cursor:pointer;
+padding-inline: 10px;
+font-size: 1.5rem;
+background-color: #6d0e13;
+color: #fff;
+border-radius: 50%;
+}
+
+.grid-box:hover{
+    background-color: rgba(217, 141, 131, 0.6);
+    border-top-left-radius: 150px;
+    border-top-right-radius: 150px;
+    color:#fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.About-food-items{
+
+    margin-block: 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content:space-evenly;
+    align-items: center;
+    padding-block: 2rem;
+    background-color: #ddd8d8d0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.About-food-items .dynamic-text h3{
+    color:#000;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 2px #3c3737;
+}
+.About-food-items .dynamic-text p{
+    color:#000;
+    font-size: 1.2rem;
+}
+.About-food-items .dynamic-text #changing-word{
+    color:#f4b300;
+
+}
+.Food-items{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Three equal columns */
+    gap:10px;
+    justify-content: center;
+}
+.Food-items .item-box{
+    text-align: center;
+}
+.Food-items img{
+    width:150px;
+    height: 140px;
+    filter: drop-shadow(1px 1px 20px #000);
+}
+
+
+/* About-banner-last */
+
+.about-last-banner{
+    margin-top: 1rem;
+    padding-block: 1rem;
+    display: flex;
+    flex-direction: row;
+    padding-right: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+
+}
+
+.about-last-banner span{
+    color:#dc0d17;
+    font-size: 1.5rem;
+    font-family: "Sofia", sans-serif;
+    font-weight: bolder;
+}
+
+.about-last-banner .heading{
+    font-size: 5rem;
+    font-family: "Sofia", sans-serif;
+    color:#dc0d17;
+    text-shadow: 2px 2px 2px #a4040c;
+}
+
+.partition{
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    margin-top: 1rem;
+}
+
+.partition .Para-part-first{
+    font-weight: 700;
+}
+
+.partition .Para-part-sec i{
+    color:#dc0d17;
+    padding:1px;
+    border: 1px solid #dc0d17;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
