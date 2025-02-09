@@ -16,7 +16,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 .top-navbar .logo{
@@ -77,6 +77,13 @@ body {
 }
 
 /* Sidebar */
+.Admin-main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+}
+
 .sidebar {
     width: 250px;
     background-color: #fff;
@@ -88,6 +95,7 @@ body {
     padding-top: 20px;
     overflow-y: auto;
     border:#333 1px solid;
+    z-index: 1000;
 }
 
 .sidebar-menu {
@@ -135,13 +143,18 @@ body {
     cursor: pointer;
 }
 
-/* Main Content */
 .main-content {
-    margin-left: 250px;
+    /* margin-left: 250px; */
     margin-top: 60px;
     padding: 20px;
-    width: calc(100% - 250px);
+    width:80%;
+    position: relative;
 }
+
+
+
+
+/* Main Content */
 
 @media (max-width: 768px) {
     .sidebar {

@@ -21,13 +21,18 @@
 
 
 
-const words = ["Tasty", "Delicious", "Flavorful", "Savory", "Mouthwatering"];
-        const changingWord = document.getElementById("changing-word");
-        let wordIndex = 0;
+document.addEventListener("DOMContentLoaded", () => {
+    const words = ["Tasty", "Delicious", "Flavorful", "Savory", "Mouthwatering"];
+    const changingWord = document.getElementById("changing-word");
+    let wordIndex = 0;
 
-        function updateWord() {
+    function updateWord() {
+        if (changingWord) { // Ensure the element exists
             changingWord.textContent = words[wordIndex];
-            wordIndex = (wordIndex + 1) % words.length;
+            wordIndex = (wordIndex + 1) % words.length; // Cycle through the words
         }
+    }
 
-setInterval(updateWord, 5000);
+    // Start updating the word every 5 seconds
+    setInterval(updateWord, 2000);
+});

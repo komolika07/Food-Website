@@ -12,7 +12,7 @@
     /* overflow: hidden; */
     /* transition : 2s ease; */
 }
-.Book-table-form h1,p{
+.Book-table-form h1, .Book-table-form p{
     text-align: center;
 }
 .Book-table-form form{

@@ -54,6 +54,7 @@
     width:90%;
     padding:1rem;
     margin: 1rem;
+    border-radius: 30px;
 }
 .custom-file input[type="file"]{
     width:70%;

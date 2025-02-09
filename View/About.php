@@ -8,11 +8,14 @@ include '../includes/Layout/header.php';
 include '../includes/Layout/navbar.php';
 ?>
 
-
+<?php
+  include "../includes/db.php";
+  include "../includes/auth.php";
+ ?>
 
     <section class="Common-sec container">
-        <h3>About <b>Us</b></h3>
-        <p><a href="HomePage.php">Home</a> / About</p>
+        <!-- <h3>About <b>Us</b></h3> -->
+        <p><a href="HomePage.php"><i class="fa-solid fa-house"></i> Home</a> > About Us</p>
     </section>
 
 
@@ -62,19 +65,19 @@ include '../includes/Layout/navbar.php';
         </div>
         <div class="Food-items">
             <div class="item-box">
-                <img src="../assets/images/2.png">
+                <img src="../assets/images/noodles.png">
                 <h5>Noodles</h5>
             </div>
             <div class="item-box">
-                <img src="../assets/images/3.png">
+                <img src="../assets/images/lollipop.png">
                 <h5>starter</h5>
             </div>
             <div class="item-box">
-                <img src="../assets/images/4.png">
+                <img src="../assets/images/rice.png">
                 <h5>Rice</h5>
             </div>
             <div class="item-box">
-                <img src="../assets/images/5.png">
+                <img src="../assets/images/soup.png">
                 <h5>Soup</h5>
             </div>
         </div>

@@ -56,13 +56,13 @@
 
 
   </div>
-  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script> -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"
     integrity="sha512-Gfrxsz93rxFuB7KSYlln3wFqBaXUc1jtt3dGCp+2jTb563qYvnUBM/GP2ZUtRC27STN/zUamFtVFAIsRFoT6/w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+  <!-- <script>
     $(document).ready(function () {
       $('#autoWidth').lightSlider({
         autoWidth: true,
@@ -72,14 +72,20 @@
         }
       });
     });
-  </script>
+  </script> -->
 
 
   <script src="../assets/js/homePage.js" defer></script>
-  <script src="../assets/js/Quick_pick_menu.js" defer></script>
+  <!-- <script src="../assets/js/Quick_pick_menu.js" defer></script> -->
   <script src="../assets/js/about.js" defer></script>
   <script src="../assets/js/loginForm.js" defer></script>
   <script src="../assets/js/profile.js" defer></script>
+  <script src="../assets/js/cart.js" defer></script>
+  <script src="../assets/js/menu.js" defer></script>
+  <script src="../assets/js/manageAddress.js" defer></script>
+  <script src="../assets/js/alert.js" defer></script>
+  <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/wishlist.js" defer></script>
 
 </body>
 

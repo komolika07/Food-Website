@@ -7,17 +7,47 @@ include '../includes/Layout/header.php';
 // include '../includes/Layout/Loginform.php';
 include '../includes/Layout/navbar.php';
 ?>
+<?php
+  include "../includes/db.php";
+  include "../includes/auth.php";
+ ?>
 
-    <section class="Common-sec container">
-        <h3>Book <b>Table</b></h3>
-        <p><a href="HomePage.php">Home</a> / Book Table</p>
+<?php
+if (isset($_SESSION['alert'])):
+    $message = $_SESSION['alert']['message'];
+    $type = $_SESSION['alert']['type'];
+?>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        showAlert("<?php echo htmlspecialchars($message); ?>", "<?php echo $type; ?>");
+    });
+</script>
+<?php
+    unset($_SESSION['alert']); // Clear the alert message after showing it
+endif;
+?>
+
+
+<!-- Alert msg  -->
+<div id="custom-alert" class="alert-msg hidden">
+
+</div>
+
+
+
+
+    <section class="Common-sec">
+        <!-- <h3>Book <b>Table</b></h3> -->
+        <p><a href="HomePage.php"><i class="fa-solid fa-house"></i> Home</a> > Book Table</p>
     </section>
 
     <section class="Book-table-form">
         <h1>Book a Table</h1>
         <p>Just a few clicks to make the reservation online for saving your time and money</p>
-        <form action="book_table.php" method="POST">
+        <form action="../includes/book_table.php" method="POST">
         <!-- Name -->
+        <input type="hidden" id="users-id" name="user_id" value="<?php echo $_SESSION['user-id']; ?>">
+
                 <div class="form-group">
                     <input type="text" id="name" name="name" placeholder="Enter your name" required>
                 </div>
@@ -64,7 +94,7 @@ include '../includes/Layout/navbar.php';
 
                 <!-- Special Requests -->
                 <div class="form-group">
-                    <textarea id="requests" name="requests" placeholder="Add any special requests"></textarea>
+                    <textarea id="requests" name="request" placeholder="Add any special requests"></textarea>
                 </div>
 
                 <!-- Submit Button -->

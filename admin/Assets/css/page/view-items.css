@@ -1,0 +1,302 @@
+.main-content {
+    /* margin-left: 250px; */
+    margin-top: 60px;
+    padding: 20px;
+    width:80%;
+    position: relative;
+}
+
+/* menu list css */
+
+.main-content .view-menu-container .menu-category{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    background-color: rgb(244, 242, 240);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    gap:3rem;
+    border-radius: 2rem;
+    width:fit-content;
+    padding-inline: 1.5rem;
+    padding-block: .5rem;
+    position: relative;
+    left:30%;
+}
+
+.main-content .view-menu-container .menu-category li{
+    display: flex;
+    gap:0.3rem;
+    padding: 0.5rem;
+    border-radius: 50px;
+    align-items: center;
+    
+    /* background-color:white; */
+}
+
+.main-content .view-menu-container .menu-category li img{
+    width: 1.5rem;
+    border-radius: 50%;
+}
+
+.menu-category li.active, .menu-category li:hover{
+    background-color: var(--yellow);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8) inset;
+}
+
+
+
+
+.menu-display-section .content-heading .meals_options img {
+    width:20px;
+}
+.menu-content{
+    margin-top: 3rem;
+}
+
+.menu-display-section{
+    display: none;
+}
+
+.menu-display-section.active{
+    display: block;
+}
+
+.menu-display-section .content-heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 4rem;
+}
+
+.V_NV_tabs{
+    display: flex;
+    gap:4rem;
+    align-items: center;
+
+}
+
+.V_NV_tabs li.active, .V_NV_tabs li:hover{
+    border:1px solid grey;
+    padding:1rem;
+    border-radius: 50px;
+    background-color: beige;
+}
+
+.menu{
+    display: none;
+}
+.menu.active{
+    display: block;
+}
+
+
+
+.content {
+    padding: 2rem;
+    /* background-color: #f4f4f4; */
+}
+.content .content-heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 2rem;
+    align-items: center;
+    color:var(--grey);
+    margin-bottom: 1rem;
+}
+.content .content-heading .V_NV_op ul{
+    display: flex;
+    flex-direction: row;
+    
+}
+.content .content-heading .V_NV_op li{
+    font-size: 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+.content .content-heading .V_NV_op img{
+    width: 1.2rem;
+}
+
+.V_NV_op ul li {
+    margin:0.5rem;
+    padding: 1rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+    background-color:transparent;
+    border-radius: 20px;
+    background-color: var(--white);
+    /* color:var(--black); */
+    font-weight: bold;
+}
+
+
+
+.V_NV_op ul li:hover,
+.V_NV_op ul li.active {
+    background-color:var(--light-grey);
+    border: #898686 1px solid;
+   
+}
+
+.v_tab{
+    color: #28a745;
+}
+
+.nv_tab{
+    color: var(--maroon-red);
+}
+
+.starter-menu {
+    display: none;
+}
+
+.starter-menu.active {
+    display: block;
+}
+
+
+
+
+.menu-card-section {
+    display: none;
+}
+
+.menu-card-section.active {
+    display: block;
+}
+
+
+
+/* menu -table css */
+
+.menu-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: none;
+}
+
+.menu-table th, .menu-table td {
+    /* border: 1px solid #ddd; */
+    padding: 8px;
+    text-align: center;
+    border: none;
+}
+
+.menu-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.menu-table img {
+    max-width: 100px;
+    width:100px;
+    border-radius: 8px;
+}
+
+
+
+
+
+/* General styles for the popup */
+
+/* .form-container{ 
+    background-color: rgba(0, 0, 0, 0.8); 
+    position : relative;
+    bottom:50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    width: 80vw;
+    /* display: none; */
+/* }   */
+
+#edit-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200; /* Ensures it is above other elements */
+    background-color: #fff;
+    padding: 20px;
+    max-width: 900px;
+    display: none;
+    width: 100%;
+    height:auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* Scrollable for smaller screens */
+}
+.input{
+    width: 100%;
+}
+/* Overlay to dim the background */
+.main-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; 
+    z-index: 100;
+ } 
+
+ .flex{
+    display: flex;
+    justify-content: space-between;
+    gap:10px
+ }
+
+/* Show the dimmed background and popup when active */
+.main-content.popup-active::after {
+    display: block;
+}
+
+#edit-form.active {
+    display: block; /* Show the popup */
+}
+
+/* Input and form styles */
+#edit-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#edit-form input,
+#edit-form textarea,
+#edit-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+#edit-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #edit-form {
+        width: 90%;
+    }
+}

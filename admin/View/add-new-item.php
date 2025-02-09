@@ -65,6 +65,10 @@ unset($_SESSION['message']); // Clear the message after displaying it
                     </select>
                 </div>
 
+                <div class="food-item-group">
+                    <label for="rating">Rating:</label>
+                    <input type="number" id="rating" name="rating" placeholder="Enter rating" required>
+                </div>
                 <!-- Discount (Optional) -->
                 <div class="food-item-group">
                     <label for="discount">Discount (Optional):</label>
@@ -75,7 +79,7 @@ unset($_SESSION['message']); // Clear the message after displaying it
 
             <div class="food-item-group">
                 <label for="description">Description :</label>
-                <textarea id="description" name="description" placeholder="Enter product description"></textarea>
+                <textarea id="description" name="description" placeholder="Enter product description" rows="4"></textarea>
             </div>
 
             <!-- Upload Image -->

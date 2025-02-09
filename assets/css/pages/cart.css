@@ -1,0 +1,112 @@
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.cart-table th, .cart-table td {
+    /* border: 1px solid #ddd; */
+    padding: 8px;
+    text-align: center;
+}
+
+.cart-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.cart-table img {
+    max-width: 80px;
+    border-radius: 8px;
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-form button {
+    border: 1px solid var(--light-grey);
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.quantity-form input{
+    padding: 5px 10px;
+    max-width:3rem;
+    width:auto;
+}
+
+/* Hide spinners for all browsers */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Chrome, Safari, Edge */
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+    appearance: textfield; /* Generic for all modern browsers */
+}
+
+.remove-btn {
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.remove-btn:hover {
+    background: #cc0000;
+}
+
+
+
+.No-cart-items{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap:1rem;
+}
+
+.No-cart-items img{
+    width:300px;
+}
+
+.No-cart-items p{
+    font-size: 1.5rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.cart-summary {
+    margin-top: 3rem;
+    margin-inline: 1rem;
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+.cart-summary h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.checkout-btn {
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.2rem;
+}

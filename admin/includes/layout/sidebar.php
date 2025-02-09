@@ -12,6 +12,8 @@
     </div>
 
     <!-- Sidebar -->
+
+<main class="Admin-main">
     <div class="sidebar">
         <ul class="sidebar-menu">
             <li><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
@@ -19,7 +21,7 @@
                 <a href="#" class="submenu-toggle"><i class="fas fa-utensils"></i> Manage Menu</a>
                 <ul class="submenu">
                     <li><a href="add-new-item.php">Add New Item</a></li>
-                    <li><a href="view-menu-items.php">View Items</a></li>
+                    <li><a href="view-items.php">View Items</a></li>
                 </ul>
             </li>
             <li>
@@ -39,9 +41,9 @@
             <li>
                 <a href="#" class="submenu-toggle"><i class="fas fa-calendar-alt"></i> Manage Table Reservation</a>
                 <ul class="submenu">
-                    <li><a href="accepted-reservations.php">Accepted</a></li>
-                    <li><a href="pending-reservations.php">Pending</a></li>
-                    <li><a href="canceled-reservations.php">Canceled</a></li>
+                    <li><a href="view_table_bookings.php">View Bookings</a></li>
+                    <!-- <li><a href="pending-reservations.php">Pending</a></li>
+                    <li><a href="canceled-reservations.php">Canceled</a></li> -->
                 </ul>
             </li>
             <li>

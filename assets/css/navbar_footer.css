@@ -36,11 +36,15 @@
     justify-content: end;
     gap:20px;
 }
-.upper-right a{
-    background-color: var(--white);
-    color:var(--maroon-red);
-    padding: 10px;
+
+.upper-right .icon{
+    font-size: 1.5rem;
+    color:var(--white);
+    background-color: var(--maroon-red);
+    padding-inline: 10px;
+    cursor: pointer;
 }
+
 .User-profile a{
     font-size: 1rem;
     padding: 10px;
@@ -204,8 +208,9 @@
     color:var(--yellow);
 }
 
-.navbar-items .icon{
+.navbar-items .icon {
     font-size: 1.2rem;
+    
 }
 
 #menu-icon{

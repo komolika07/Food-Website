@@ -7,9 +7,34 @@ include '../includes/Layout/header.php';
 // include '../includes/Layout/Loginform.php';
 include '../includes/Layout/navbar.php';
 ?>
+<?php
+  include "../includes/db.php";
+  include "../includes/auth.php";
+ ?>
+
+<?php
+if (isset($_SESSION['alert'])):
+    $message = $_SESSION['alert']['message'];
+    $type = $_SESSION['alert']['type'];
+?>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        showAlert("<?php echo htmlspecialchars($message); ?>", "<?php echo $type; ?>");
+    });
+</script>
+<?php
+    unset($_SESSION['alert']); // Clear the alert message after showing it
+endif;
+?>
+
+
+<!-- Alert msg  -->
+<div id="custom-alert" class="alert-msg hidden">
+
+</div>
 <section class="Common-sec container">
-        <h3>Contact <b>Us</b></h3>
-        <p><a href="HomePage.php">Home</a> / Contact</p>
+        <!-- <h3>Contact <b>Us</b></h3> -->
+        <p><a href="HomePage.php"><i class="fa-solid fa-house"></i> Home</a> > Contact </p>
     </section>
 
 <section class="contact-section container">
@@ -68,20 +93,21 @@ include '../includes/Layout/navbar.php';
           </div>
           
           <div class="form">
-            <form action="" method="post">
+            <form action="../includes/manageFeedback.php" method="POST">
+            <input type="hidden" id="users-id" name="user_id" value="<?php echo $_SESSION['user-id']; ?>">
               <div class="contact-field username">
-                <input type="text" id="contact-name" name="name" placeholder="FirstName">
-                <input type="text" id="contact-lname" name="lname" placeholder="LastName">
+                <input type="text" id="contact-name" name="user_name" placeholder="FirstName">
+                <input type="text" id="contact-lname" name="user_lname" placeholder="LastName">
               </div>
               <div class="contact-field email">
-                <input type="email" id="contact-email" name="email" placeholder="Enter Email">
+                <input type="email" id="contact-email" name="user_email" placeholder="Enter Email">
               </div>
 
               <div class="contact-field message">
-                <textarea id="message" name="message" placeholder="Enter your message"></textarea>
+                <textarea id="message" name="feedback_message" placeholder="Enter your message"></textarea>
               </div>
 
-              <button class="sign-in primary-form-btn">Submit</button>
+              <button class="feedback-btn primary-form-btn" id="feedback-btn">Submit</button>
 
             </form>
           </div>

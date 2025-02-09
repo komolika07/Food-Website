@@ -1,40 +1,40 @@
 
-    const MenuItems = document.getElementById("menu-category");
-    const contentDivs = document.querySelectorAll(".Menu-cards-container");
-    const listItems = document.querySelectorAll(".menu-category li");
+    // const MenuItems = document.getElementById("menu-category");
+    // const contentDivs = document.querySelectorAll(".Menu-cards-container");
+    // const listItems = document.querySelectorAll(".menu-category li");
 
 // console.log(MenuItems);
 // console.log(contentDivs[0]);
 // console.log(listItems);
 
     // Show associated content on list item click
-    listItems.forEach(function(item) {
-        item.addEventListener("click", function() {
-            // Hide all content divs
-            contentDivs.forEach(function(div) {
-                div.style.display = "none";
-            });
+    // listItems.forEach(function(item) {
+    //     item.addEventListener("click", function() {
+    //         // Hide all content divs
+    //         contentDivs.forEach(function(div) {
+    //             div.style.display = "none";
+    //         });
 
-            listItems.forEach(function(li) {
-                li.classList.remove("active");
-            });
+    //         listItems.forEach(function(li) {
+    //             li.classList.remove("active");
+    //         });
             
-            // Get the target content div
-            const target = this.getAttribute("data-target");
-            const targetDiv = document.getElementById(target);
+    //         // Get the target content div
+    //         const target = this.getAttribute("data-target");
+    //         const targetDiv = document.getElementById(target);
 
-            // Show the target content div
-            if (targetDiv) {
-                targetDiv.style.display = "block";
-            }
+    //         // Show the target content div
+    //         if (targetDiv) {
+    //             targetDiv.style.display = "block";
+    //         }
 
-            //for active class item style
-            this.classList.add("active");
+    //         //for active class item style
+    //         this.classList.add("active");
 
-            // Hide the menu (useful for mobile)
-            // MenuItems.style.display = "none";
-        });
-    });
+    //         // Hide the menu (useful for mobile)
+    //         // MenuItems.style.display = "none";
+    //     });
+    // });
 
 
 //menu list

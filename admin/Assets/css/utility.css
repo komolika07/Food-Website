@@ -1,0 +1,153 @@
+a{
+    text-decoration: none;
+    color:black;
+}
+
+
+:root{
+    --black:#000000;
+    --light-black:#333;
+    --white:#fff;
+    --yellow:#f7be27;
+    --maroon-red:#690c11;
+    --dark-maroon-red:#52090d;
+    --grey:#757575;
+    --light-grey:#eeeeee;
+    --green:rgb(2, 101, 2);
+    --padding-inline-section:2rem;
+}
+body{
+    font-family:'Poppins',sans-serif;
+    color:var(--black);
+}
+h1{
+    font-size: 3.5rem;
+}
+h2{
+    font-size: 3rem;
+}
+h3{
+    font-size: 2.5rem;
+}
+h4{
+    font-size: 1.5rem;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    display: inline-block;
+}
+
+p{
+    font-family: 'Robota' ,sans-serif;
+    font-size: 16px;
+    color:var(--grey);
+    line-height: 1.4rem;
+}
+
+.primary-btn{
+    background-color: var(--maroon-red);
+    color:var(--light-grey);
+    padding: 12px 24px;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 0 2px var(--light-grey);
+    transition: 0.2s ease-in-out;
+    outline: none;
+    border:none;
+}
+.primary-btn:hover{
+    background-color: var(--dark-maroon-red);
+}
+.secondary-btn{
+    background-color: transparent;
+    color:var(--light-black);
+    border:1px solid var(--light-black);
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; 
+}
+.secondary-btn:hover{
+    color:var(--black); 
+    border:2px solid var(--black);
+}
+
+
+
+
+/* alert msg css */
+#custom-alert {
+    position: fixed;
+    top: 80px;
+    right: 20px; /* Keep the alerts 20px from the right side */
+    z-index: 10000; /* Ensure it stays above all other elements */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 800px; /* Adjust width as needed */
+  }
+  
+  .alert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideInFromRight 0.3s ease, slideOutToRight 0.5s ease 4.5s; /* New animations */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 10px solid #1f4929;
+  }
+  
+  .alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 10px solid #9f1a27;
+  }
+  
+  .alert .close-btn {
+    margin-left: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    color: inherit;
+  }
+  
+  /* Slide-in from the right */
+  @keyframes slideInFromRight {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Slide-out to the right */
+  @keyframes slideOutToRight {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+  

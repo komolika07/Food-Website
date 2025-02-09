@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if(mysqli_num_rows($select) > 0){
         $rows = mysqli_fetch_assoc($select);
-        echo $_SESSION['user-id'] = $rows['user_id'];
+        $_SESSION['user-id'] = $rows['user_id'];
         header('Location: ../view/HomePage.php');
     }
     else{
