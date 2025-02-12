@@ -48,9 +48,9 @@ function renderMenuSection($conn, $category, $meal_op)
                 </div>
 
                 <div class="card-prices">
-                    <span class="price">$<?= htmlspecialchars($row['discounted_price']) ?></span>
+                    <span class="price">₹<?= htmlspecialchars($row['discounted_price']) ?></span>
                     <?php if ((float) $row['discount'] > 0): ?>
-                        <span class="original-price">$<?= htmlspecialchars($row['price']) ?></span>
+                        <span class="original-price">₹<?= htmlspecialchars($row['price']) ?></span>
                         <span class="discount">-<?= htmlspecialchars($row['discount']) ?>%</span>
                     <?php endif; ?>
                 </div>

@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const wishlistContainer = document.getElementById("wishlist-container");
-
+    const table = document.createElement('table');
     // Fetch wishlist items from the server
     fetch("../includes/fetch_wishlist.php")
         .then((response) => response.json())
@@ -51,15 +51,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td><img src="../admin/${item.image_path}" alt="${item.name}"></td>
                 <td>${item.name}</td>
                 <td>⭐ ${item.rating}</td>
-                <td>$${item.price}</td>
-                <td>${item.description}</td>
+                <td>₹${item.discounted_price}</td>
                 <td>
-                    <button class="add-to-cart" data-id="">Add To Cart </button>
-                    <button class="remove-btn" data-id="${item.id}">Remove</button>
+                    <button class="add-to-cart primary-btn" data-id='${item.product_id}'>Add To Cart </button>
+                </td>
+                <td>
+                    <button class="remove-btn secondary-btn" data-id="${item.product_id}">Remove</button>
                 </td>
             `;
 
-            wishlistContainer.appendChild(row);
+            table.appendChild(row);
+            wishlistContainer.appendChild(table);
                     });
 
 
@@ -79,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to attach event listeners for wishlist actions
     function attachWishlistActions() {
         // Remove from wishlist
-        document.querySelectorAll(".remove-from-wishlist").forEach((btn) => {
+        document.querySelectorAll(".remove-btn").forEach((btn) => {
             btn.addEventListener("click", () => {
                 const productId = btn.getAttribute("data-id");
 
@@ -104,10 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             }
                         }
                     })
-                    .catch((error) => {
-                        console.error("Error removing from wishlist:", error);
-                        showAlert("Failed to remove item. Please try again.", "error");
-                    });
             });
         });
 

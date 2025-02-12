@@ -250,10 +250,10 @@ $stmt->close();
                 <?php if (!empty($bookings)): ?>
                     <?php foreach ($bookings as $booking): ?>
                         <div class="booking-card">
-                            <h4>
-                                Booking Id : <?php echo htmlspecialchars($booking['booking_id']) ?>
+                            <h4 class="Booking_id">
+                                #Booking Id : <?php echo htmlspecialchars($booking['booking_id']) ?>
                             </h4>
-                            <h5>
+                            <h5 class="booking_date">
                                 Booking Date: <?php echo htmlspecialchars($booking['booking_date']); ?>
                                 at <?php echo htmlspecialchars($booking['booking_time']); ?>
                             </h5>

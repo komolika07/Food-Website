@@ -179,9 +179,9 @@ include "../includes/auth.php";
             $discounted_price = htmlspecialchars($row['discounted_price']);
             $original_price = htmlspecialchars($row['price']);
             $discount = htmlspecialchars($row['discount']);
-            echo '<span class="price">$' . $discounted_price . '</span>';
+            echo '<span class="price">₹' . $discounted_price . '</span>';
             if ((float) $discount > 0) {
-              echo '<span class="original-price">$' . $original_price . '</span>';
+              echo '<span class="original-price">₹' . $original_price . '</span>';
               echo '<span class="discount">-' . $discount . '%</span>';
             }
             echo '</div>';

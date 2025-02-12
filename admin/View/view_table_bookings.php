@@ -1,3 +1,19 @@
+
+<?php
+include '../includes/db.php';
+// session_start(); // Start the session
+
+// Check if the user is logged in and has the correct role
+// if (!isset($_SESSION['loggedin']) || $_SESSION['role'] !== 'super_admin') {
+//     // Redirect to the login page
+//     header("Location: admin_login.php");
+//     exit;
+// }
+
+// Admin panel content goes here
+// echo "Welcome, " . htmlspecialchars($_SESSION['username']) . "! This is the Admin Panel.";
+?>
+
 <?php
 $pageTitle = "Menu";
 $pageStyles = [
@@ -6,11 +22,7 @@ $pageStyles = [
 include '../includes/layout/header.php';
 ?>
 
-<?php
-include "../includes/db.php";
-session_start();
 
-?>
 
 <?php
 if (isset($_SESSION['alert'])):

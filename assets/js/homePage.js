@@ -175,8 +175,8 @@ quickViewBtns.forEach((btn) => {
         // Populate popup content
         popupImage.src = imagePath;
         popupTitle.textContent = title;
-        popupPrice.textContent = price;
-        popupOriginalPrice.textContent = originalPrice;
+        popupPrice.textContent = "₹"+price;
+        popupOriginalPrice.textContent = "₹"+originalPrice;
         popupDescription.textContent = description;
         popupRating.textContent = rating;
         popupCategory.textContent = category;

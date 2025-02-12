@@ -1,3 +1,5 @@
+
+
 document.querySelectorAll('.submenu-toggle').forEach(button => {
     button.addEventListener('click', function () {
         const submenu = this.nextElementSibling;
@@ -7,12 +9,7 @@ document.querySelectorAll('.submenu-toggle').forEach(button => {
     });
 });
     
-    
-    
-    
-    
-    
-    
+
     /* Toggle dropdown menu on click */
     const dropdownButton = document.querySelector('.dropdown button');
     const dropdownMenu = document.querySelector('.dropdown-menu');
@@ -27,3 +24,28 @@ document.querySelectorAll('.submenu-toggle').forEach(button => {
     document.addEventListener('click', function () {
         dropdownMenu.style.display = 'none';
     });
+
+
+//     // profile popup display
+
+// // Get Modal Elements
+const profileContainer = document.getElementById("profilecontainer");
+const editProfileBtn = document.getElementById("ProfileBtn");
+const closeBtn = document.querySelector(".close");
+
+// Open Modal
+editProfileBtn.addEventListener("click", () => {
+    profileContainer.style.display = "flex"; // Display the modal as flexbox
+});
+
+// Close Modal
+closeBtn.addEventListener("click", () => {
+    profileContainer.style.display = "none";
+});
+
+// Close Modal on Outside Click
+window.addEventListener("click", (event) => {
+    if (event.target === profileContainer) {
+        profileContainer.style.display = "none";
+    }
+});

@@ -23,7 +23,7 @@
             <div class="Admin-Form" id="admin-form">
                 <div class="form">
                     <h2>Admin Login</h2>
-                    <form action="" method="post">
+                    <form action="../includes/login.php" method="POST">
                         <div class="Error_msg">
                             <i class="fas fa-exclamation-triangle"></i> This is Error msg
                         </div>

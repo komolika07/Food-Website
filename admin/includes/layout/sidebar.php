@@ -1,17 +1,19 @@
 
-    <!-- Top Navbar -->
-    <div class="top-navbar">
-        <div class="logo"><img src="../Assets/images/logo.png"></div>
-        <div class="dropdown">
-            <button>Admin &#9662;</button>
-            <div class="dropdown-menu">
-                <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
-                <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-            </div>
+<!-- Top Navbar -->
+<div class="top-navbar">
+    <div class="logo"><img src="../Assets/images/logo.png"></div>
+    <div class="dropdown">
+        <button>Admin &#9662;</button>
+        <div class="dropdown-menu">
+            <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+            <a href="#" id="ProfileBtn"><i class="fa-solid fa-right-from-bracket"></i> profile</a>
         </div>
     </div>
+</div>
 
-    <!-- Sidebar -->
+
+
+<!-- Sidebar -->
 
 <main class="Admin-main">
     <div class="sidebar">
@@ -62,6 +64,12 @@
         </ul>
     </div>
 
+
+
+    
+
+
+
     <!-- Main Content -->
     <!-- <div class="main-content">
         <h1>Welcome to the Admin Dashboard</h1>
@@ -69,4 +77,3 @@
     </div> -->
 
     <!-- Font Awesome for icons -->
-   
