@@ -9,8 +9,16 @@
     <link rel="stylesheet" href="../Assets/css/page/Login.css">
 </head>
 
-<body>
+<!-- session message handling -->
+<?php
+session_start();
+$message = isset($_SESSION['message']) ? $_SESSION['message'] : null;
+unset($_SESSION['message']); // Clear the message after displaying it
+?>
 
+
+<body>
+<!-- admin-form -->
     <div class="main">
 
         <section class="Admin-form-section">
@@ -25,7 +33,13 @@
                     <h2>Admin Login</h2>
                     <form action="../includes/login.php" method="POST">
                         <div class="Error_msg">
-                            <i class="fas fa-exclamation-triangle"></i> This is Error msg
+                            <!-- <i class="fas fa-exclamation-triangle"></i> This is Error msg -->
+
+                            <?php if ($message): ?>
+                                <div class="alert <?= htmlspecialchars($message['type']) ?>">
+                                    <?= htmlspecialchars($message['text']) ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
 
                         <div class="form-field Role">

@@ -1,19 +1,9 @@
-
 <?php
-include '../includes/db.php';
-// session_start(); // Start the session
+include '../includes/db.php'; //included database connction file
 
-// Check if the user is logged in and has the correct role
-// if (!isset($_SESSION['loggedin']) || $_SESSION['role'] !== 'super_admin') {
-//     // Redirect to the login page
-//     header("Location: admin_login.php");
-//     exit;
-// }
-
-// Admin panel content goes here
-// echo "Welcome, " . htmlspecialchars($_SESSION['username']) . "! This is the Admin Panel.";
 ?>
 
+<!-- individual css file adding for particular page css -->
 <?php
 $pageTitle = "Menu";
 $pageStyles = [
@@ -23,23 +13,23 @@ include '../includes/layout/header.php';
 ?>
 
 
-
+<!-- handling alert session to pass parameters to the showAlert function -->
 <?php
 if (isset($_SESSION['alert'])):
     $message = $_SESSION['alert']['message'];
     $type = $_SESSION['alert']['type'];
-?>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        showAlert("<?php echo htmlspecialchars($message); ?>", "<?php echo $type; ?>");
-    });
-</script>
-<?php
+    ?>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            showAlert("<?php echo htmlspecialchars($message); ?>", "<?php echo $type; ?>");
+        });
+    </script>
+    <?php
     unset($_SESSION['alert']); // Clear the alert message after showing it
 endif;
 ?>
 
-
+<!-- function to add table bookings  -->
 <?php
 function renderBookingSection($conn, $category)
 {
@@ -111,13 +101,13 @@ function renderBookingSection($conn, $category)
 }
 ?>
 
-
+<!-- main content of the page -->
 <div class="main-content">
 
-<!-- Alert msg  -->
-<div id="custom-alert" class="alert-msg hidden">
+    <!-- Alert msg  -->
+    <div id="custom-alert" class="alert-msg hidden">
 
-</div>
+    </div>
 
     <h1>View Table Bookings
     </h1>
@@ -126,6 +116,7 @@ function renderBookingSection($conn, $category)
 
     <hr>
 
+    <!-- section li items for pending , rejected and accepted -->
     <div class="view-Booking-container">
 
         <ul class="booking-category" id="booking-category">
@@ -141,7 +132,7 @@ function renderBookingSection($conn, $category)
         </ul>
     </div>
 
-
+    <!-- display of each table-booking container when clicked on respective li item -->
     <div class="booking-content">
         <?php
         $categories = ['pending', 'accepted', 'rejected'];
@@ -160,9 +151,10 @@ function renderBookingSection($conn, $category)
             </div>
         <?php } ?>
     </div>
+
 </div>
 
-
+<!-- footer -->
 <?php
 include '../includes/layout/footer.php'
-    ?>
+?>

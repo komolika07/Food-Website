@@ -9,7 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['admin-password'];
 
     if (empty($role) || empty($username) || empty($password)) {
-        echo "<script>alert('All fields are required.');</script>";
+        $_SESSION['message'] = [
+            'text' => 'All Fields Required!',
+            'type' => 'error'
+           ];
     } else {
         // Fetch user from database
         $query = "SELECT * FROM admin_user WHERE username = ? AND role = ?";
@@ -40,10 +43,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     exit;
                 }
             } else {
-                echo "<script>alert('Invalid password.');</script>";
+                $_SESSION['message'] = [
+                    'text' => 'Incorrect credentials!',
+                    'type' => 'error'
+                   ];
+                   header("Location:../view/admin_login.php");
             }
         } else {
-            echo "<script>alert('User not found.');</script>";
+            $_SESSION['message'] = [
+                'text' => 'User Not Found!',
+                'type' => 'error'
+               ];
+               header("Location:../view/admin_login.php");
         }
     }
 }

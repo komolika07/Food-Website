@@ -1,18 +1,8 @@
 <?php
-include '../includes/db.php';
-// session_start(); // Start the session
-
-// Check if the user is logged in and has the correct role
-// if (!isset($_SESSION['loggedin']) || $_SESSION['role'] !== 'super_admin') {
-//     // Redirect to the login page
-//     header("Location: admin_login.php");
-//     exit;
-// }
-
-// Admin panel content goes here
-// echo "Welcome, " . htmlspecialchars($_SESSION['username']) . "! This is the Admin Panel.";
+include '../includes/db.php'; //included database connection file.
 ?>
 
+<!-- individual css file adding for particular page css -->
 <?php
 $pageTitle = "Menu";
 $pageStyles = [
@@ -23,6 +13,7 @@ include '../includes/layout/header.php';
 
 
 
+<!-- function to add items to the view-items  -->
 <?php
 function renderMenuSection($conn, $category, $option)
 {
@@ -90,12 +81,15 @@ function renderMenuSection($conn, $category, $option)
 }
 ?>
 
+
+<!-- main content of the page -->
 <div class="main-content">
     <h1>View Items</h1>
     <p><a href="dashboard.php"><i class="fa-solid fa-house"></i> Home</a> / Manage Menu / View Item</p>
 
     <hr>
 
+    <!-- menu category li item to handle each menu section -->
     <div class="view-menu-container">
 
         <ul class="menu-category" id="menu-category">
@@ -114,6 +108,7 @@ function renderMenuSection($conn, $category, $option)
         </ul>
     </div>
 
+    <!-- display of each menu-section container when clicked on respective li item -->
     <div class="menu-content">
         <?php
         $categories = ['Starter', 'Soup', 'Noodles', 'Rice'];
@@ -151,6 +146,7 @@ function renderMenuSection($conn, $category, $option)
         <?php } ?>
     </div>
 
+    <!-- popup form to edit the menu-item details -->
     <div class="form-container">
         <div id="edit-form">
             <form action="../includes/update-product.php" method="POST" enctype="multipart/form-data">
@@ -218,9 +214,10 @@ function renderMenuSection($conn, $category, $option)
         </div>
     </div>
 
-    <!-- </div> -->
+</div>
 
 
-    <?php
-    include '../includes/layout/footer.php'
-        ?>
+<!-- footer -->
+<?php
+include '../includes/layout/footer.php'
+?>

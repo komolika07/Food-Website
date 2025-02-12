@@ -1,17 +1,8 @@
 <?php
-include '../includes/db.php';
-// session_start(); // Start the session
+include '../includes/db.php'; //database file included
+?>
 
-// // Check if the user is logged in and has the correct role
-// if (!isset($_SESSION['loggedin']) || $_SESSION['role'] !== 'super_admin') {
-//     // Redirect to the login page
-//     header("Location: admin_login.php");
-//     exit;
-// }
-// Admin panel content goes here
-// echo "Welcome, " . htmlspecialchars($_SESSION['username']) . "! This is the Admin Panel.";
-?> 
-
+<!-- individual css file adding for particular page css -->
 <?php
 $pageTitle = "Menu";
 $pageStyles = [
@@ -22,98 +13,104 @@ include '../includes/layout/header.php';
 
 
 
-
+<!-- session message handling to display success or error msg -->
 <?php
 $message = isset($_SESSION['message']) ? $_SESSION['message'] : null;
 unset($_SESSION['message']); // Clear the message after displaying it
-?> 
+?>
 
 
+<!-- main content of the page -->
 
 <div class="main-content">
-        <h1>Add item</h1>
-        <p><a href="dashboard.php"><i class="fa-solid fa-house"></i> Home</a> / Manage Menu / Add New Item</p>
+    <h1>Add item</h1>
+    <p><a href="dashboard.php"><i class="fa-solid fa-house"></i> Home</a> / Manage Menu / Add New Item</p>
 
-        <hr>
-        <form class="add-item-form" action="../includes/add-item-process.php" method="POST" enctype="multipart/form-data">
-            <div class="upload-msg">
-                <?php if ($message): ?>
-                    <div class="alert <?= htmlspecialchars($message['type']) ?>">
-                        <?= htmlspecialchars($message['text']) ?>
-                    </div>
-                <?php endif; ?>
-            </div>
+    <hr>
+    <!-- form to add-items -->
+    <form class="add-item-form" action="../includes/add-item-process.php" method="POST" enctype="multipart/form-data">
+        <div class="upload-msg">
+            <?php if ($message): ?>
+                <div class="alert <?= htmlspecialchars($message['type']) ?>">
+                    <?= htmlspecialchars($message['text']) ?>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="food-item-group">
+            <label for="product-name">Product Name :</label>
+            <input type="text" id="product-name" class="product-name" name="name" placeholder="Enter Product Name"
+                required>
+        </div>
+        <div class="flex">
             <div class="food-item-group">
-                <label for="product-name">Product Name :</label>
-                <input type="text" id="product-name" class="product-name" name="name" placeholder="Enter Product Name" required>
+                <label for="select-category">Select Category :</label>
+                <select id="select-category" name="category">
+                    <option value="">Select category</option>
+                    <option value="rice">Rice</option>
+                    <option value="noodles">Noodles</option>
+                    <option value="soup">Soup</option>
+                    <option value="starter">Starter</option>
+                </select>
             </div>
-            <div class="flex">
-                <div class="food-item-group">
-                    <label for="select-category">Select Category :</label>
-                    <select id="select-category" name="category">
-                        <option value="">Select category</option>
-                        <option value="rice">Rice</option>
-                        <option value="noodles">Noodles</option>
-                        <option value="soup">Soup</option>
-                        <option value="starter">Starter</option>
-                    </select>
-                </div>
-
-                <div class="food-item-group">
-                    <label for="meal-op">Meal Option:</label>
-                    <select id="meal-op" name="meal-op">
-                        <option value="">Select option</option>
-                        <option value="veg">veg</option>
-                        <option value="nonveg">nonveg</option>
-                    </select>
-                </div>
-
-                <div class="food-item-group">
-                    <label for="product-price">Price :</label>
-                    <input type="number" id="product-price" class="product-price" name="price" placeholder="Enter Price"required>
-                </div>
-
-            </div>
-
-            <div class="flex">
-                <div class="food-item-group">
-                    <label for="status">Status :</label>
-                    <select id="status" name="status" required>
-                        <option value="in-stock">In Stock</option>
-                        <option value="out-of-stock">Out of Stock</option>
-                    </select>
-                </div>
-
-                <div class="food-item-group">
-                    <label for="rating">Rating:</label>
-                    <input type="number" id="rating" name="rating" placeholder="Enter rating" required>
-                </div>
-                <!-- Discount (Optional) -->
-                <div class="food-item-group">
-                    <label for="discount">Discount (Optional):</label>
-                    <input type="number" id="discount" name="discount" placeholder="Enter discount percentage">
-                </div>
-            </div>
-
 
             <div class="food-item-group">
-                <label for="description">Description :</label>
-                <textarea id="description" name="description" placeholder="Enter product description" rows="4"></textarea>
+                <label for="meal-op">Meal Option:</label>
+                <select id="meal-op" name="meal-op">
+                    <option value="">Select option</option>
+                    <option value="veg">veg</option>
+                    <option value="nonveg">nonveg</option>
+                </select>
             </div>
 
-            <!-- Upload Image -->
-            <div class="food-item-group custom-file">
-                <label for="food-image">Upload Food Image :</label>
-                <input type="file" id="fileInput" name="image">
+            <div class="food-item-group">
+                <label for="product-price">Price :</label>
+                <input type="number" id="product-price" class="product-price" name="price" placeholder="Enter Price"
+                    required>
             </div>
 
-            <!-- Submit Button -->
-            <div class="form-actions">
-                <button type="submit " class="primary-btn">Add Menu Item</button>
-            </div>
-        </form>
-    </div>
+        </div>
 
-    <?php 
-    include '../includes/layout/footer.php'
-    ?>
+        <div class="flex">
+            <div class="food-item-group">
+                <label for="status">Status :</label>
+                <select id="status" name="status" required>
+                    <option value="in-stock">In Stock</option>
+                    <option value="out-of-stock">Out of Stock</option>
+                </select>
+            </div>
+
+            <div class="food-item-group">
+                <label for="rating">Rating:</label>
+                <input type="number" id="rating" name="rating" placeholder="Enter rating" required>
+            </div>
+            <!-- Discount (Optional) -->
+            <div class="food-item-group">
+                <label for="discount">Discount (Optional):</label>
+                <input type="number" id="discount" name="discount" placeholder="Enter discount percentage">
+            </div>
+        </div>
+
+
+        <div class="food-item-group">
+            <label for="description">Description :</label>
+            <textarea id="description" name="description" placeholder="Enter product description" rows="4"></textarea>
+        </div>
+
+        <!-- Upload Image -->
+        <div class="food-item-group custom-file">
+            <label for="food-image">Upload Food Image :</label>
+            <input type="file" id="fileInput" name="image">
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-actions">
+            <button type="submit " class="primary-btn">Add Menu Item</button>
+        </div>
+    </form>
+
+</div>
+
+<!-- footer included-->
+<?php
+include '../includes/layout/footer.php'
+?>

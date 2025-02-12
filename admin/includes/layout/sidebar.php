@@ -6,7 +6,7 @@
         <button>Admin &#9662;</button>
         <div class="dropdown-menu">
             <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
-            <a href="#" id="ProfileBtn"><i class="fa-solid fa-right-from-bracket"></i> profile</a>
+            <a href="#" id="ProfileBtn"><i class="fa-solid fa-user"></i> profile</a>
         </div>
     </div>
 </div>
@@ -64,7 +64,7 @@
         </ul>
     </div>
 
-
+</main>
 
     
 

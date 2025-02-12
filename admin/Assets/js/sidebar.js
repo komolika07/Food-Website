@@ -29,6 +29,7 @@ document.querySelectorAll('.submenu-toggle').forEach(button => {
 //     // profile popup display
 
 // // Get Modal Elements
+const body = document.querySelector('body');
 const profileContainer = document.getElementById("profilecontainer");
 const editProfileBtn = document.getElementById("ProfileBtn");
 const closeBtn = document.querySelector(".close");
@@ -36,16 +37,19 @@ const closeBtn = document.querySelector(".close");
 // Open Modal
 editProfileBtn.addEventListener("click", () => {
     profileContainer.style.display = "flex"; // Display the modal as flexbox
+    body.classList.add("no-scroll");
 });
 
 // Close Modal
 closeBtn.addEventListener("click", () => {
     profileContainer.style.display = "none";
+    body.classList.remove("no-scroll");
 });
 
 // Close Modal on Outside Click
 window.addEventListener("click", (event) => {
     if (event.target === profileContainer) {
         profileContainer.style.display = "none";
+        body.classList.remove("no-scroll");
     }
 });
