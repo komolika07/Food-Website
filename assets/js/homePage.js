@@ -54,10 +54,10 @@ function moveSlide(direction) {
     currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
 
     // Move the slides container to show the correct slide
-    if(slidesContainer){
+    if (slidesContainer) {
         slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
-    
+
 
     // Remove and re-add the animation classes to restart the animations
     slides.forEach((slide, index) => {
@@ -138,10 +138,6 @@ function showhomeSection(sectionId) {
 
 
 
-// Get the popup and the close button
-
-
-
 const quickViewBtns = document.querySelectorAll('.quick-view-btn');
 const popupContainer = document.getElementById('quickview-popup');
 const closePopupBtn = document.querySelector('.close-popup');
@@ -154,8 +150,10 @@ const popupRating = document.getElementById("popup-rating");
 const popupCategory = document.getElementById("popup-category");
 const popupOriginalPrice = document.getElementById('popup-original-price');
 const popupDescription = document.getElementById('popup-description');
+const popupDiscount = document.getElementById('popup-discount');
+const popupStatus = document.getElementById('popup-status');
 const addToCartButton = document.querySelector('.popup-add-to-cart'); // Add To Cart button in popup
-// const quantityInput = document.querySelector('.quantity-input'); // Quantity input field
+const buyNowButton = document.querySelector('.buy-now-btn'); // Buy Now button in popup
 
 // Event listener for Quick View buttons
 quickViewBtns.forEach((btn) => {
@@ -168,25 +166,46 @@ quickViewBtns.forEach((btn) => {
         const title = card.getAttribute('data-name');
         const price = card.getAttribute('data-price');
         const originalPrice = card.getAttribute('data-original-price');
+        const discount = card.getAttribute('data-discount');
         const rating = card.getAttribute("data-rating");
         const description = card.getAttribute('data-description');
         const category = card.getAttribute('data-category');
+        const status = card.getAttribute('data-status'); // Get product status (In Stock / Out of Stock)
 
         // Populate popup content
         popupImage.src = imagePath;
         popupTitle.textContent = title;
-        popupPrice.textContent = "₹"+price;
-        popupOriginalPrice.textContent = "₹"+originalPrice;
+        popupPrice.textContent = "₹" + price;
+
         popupDescription.textContent = description;
         popupRating.textContent = rating;
         popupCategory.textContent = category;
 
+
+        if (discount > 0) {
+            popupDiscount.style.display = 'inline-block';
+            popupOriginalPrice.textContent = "₹" + originalPrice;
+            popupDiscount.textContent = discount + "%";
+        }
+        else{
+            popupOriginalPrice.textContent = '';
+            popupDiscount.style.display = 'none';
+        }
         // Update Add To Cart button with the product ID
         console.log("Product ID: ", productId);
         addToCartButton.setAttribute('data-id', productId);
+        buyNowButton.setAttribute('data-id', productId);
 
-        // Add this to verify the ID
-        // addToCartPopupBtn.setAttribute('data-id', productId);
+        // **Disable buttons if the product is out of stock**
+        if (status.toLowerCase() === "out-of-stock") {
+            addToCartButton.setAttribute("disabled", "disabled");
+            buyNowButton.setAttribute("disabled", "disabled");
+            popupStatus.textContent = "Out of Stock";
+        } else {
+            addToCartButton.removeAttribute("disabled");
+            buyNowButton.removeAttribute("disabled");
+            popupStatus.textContent = '';
+        }
 
         // Show the popup
         popupContainer.style.display = 'flex';
@@ -200,8 +219,8 @@ if (closePopupBtn) {
         popupContainer.style.display = 'none';
         document.body.classList.remove('no-scroll');
     });
-
 }
+
 
 
 // Add To Cart functionality

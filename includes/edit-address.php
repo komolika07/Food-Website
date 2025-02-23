@@ -11,6 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $city = $_POST['city'];
     $state = $_POST['state'];
     $zip = $_POST['zip'];
+    $locality = $_POST['locality'];
+    $landmark = $_POST['landmark'];
+    $alt_phone = $_POST['alt-phone'];
 
     // Validate that the user owns this address
     $sql = "SELECT * FROM user_addresses WHERE address_id = ? AND user_id = ?";
@@ -21,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result->num_rows > 0) {
         // Update the address
-        $updateSql = "UPDATE user_addresses SET user_name = ?, phone = ?, address_line = ?, city = ?, state = ?, zip_code = ? WHERE address_id = ? AND user_id = ?";
+        $updateSql = "UPDATE user_addresses SET user_name = ?, phone = ?, address_line = ?, city = ?, state = ?, zip_code = ?, locality = ?, landmark = ?, alt_phone = ? WHERE address_id = ? AND user_id = ?";
         $updateStmt = $conn->prepare($updateSql);
-        $updateStmt->bind_param("sssssiii", $user_name, $phone, $address_line, $city, $state, $zip, $id, $user_id);
+        $updateStmt->bind_param("sssssssssii", $user_name, $phone, $address_line, $city, $state, $zip, $locality, $landmark, $alt_phone, $id, $user_id);
 
         if ($updateStmt->execute()) {
         //    header("Location: ../View/profile.php");

@@ -86,6 +86,8 @@
   <script src="../assets/js/alert.js" defer></script>
   <script src="../assets/js/contact.js" defer></script>
   <script src="../assets/js/wishlist.js" defer></script>
+  <script src="../assets/js/checkout.js" defer></script>
+  <script src="../assets/js/deals.js" defer></script>
 
 </body>
 

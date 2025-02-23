@@ -84,7 +84,7 @@ body {
 
 
 /* Modal Styling */
-.profile-contain{
+.profile-contain, .setting-contain{
     display: none;/* Hidden by default */
     position: fixed;
     top: 1rem;
@@ -97,18 +97,22 @@ body {
     z-index: 1000;
 }
 
-.profile-content {
+.profile-content, .setting-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     width: 400px;
-    text-align: center;
+    /* text-align: center; */
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.profile-content h3, .setting-content h3{
+    text-align: center;
+}
+
 /* Close Button */
-.close {
+.close, .settingclose{
     position: absolute;
     top: 10px;
     right: 15px;
@@ -139,7 +143,6 @@ label {
 
 .profile-content .form-field input {
     width: 95%;
-    padding: 8px;
     /* border: 1px solid #ddd; */
     border-radius: 5px;
     background: transparent;
@@ -157,6 +160,25 @@ label {
     overflow: hidden;
 }
 
+#settingForm input{
+    width: 95%;
+    padding: 8px;
+    /* border: 1px solid #ddd; */
+    border-radius: 5px;
+    background: transparent;
+    border:none;
+    outline:none;
+    font-size: 15px;
+    color: rgb(59, 55, 55);
+    border:1.5px solid rgb(132, 128, 128);
+    border-radius: 20px;
+    padding: 0.8rem;
+    margin-block: 0.3rem;
+}
+
+.setting-update, .profile-actions{
+    text-align: center;
+}
 /* button[type="submit"] {
     background-color: #28a745;
 }
@@ -235,11 +257,13 @@ button[type="submit"]:hover {
 }
 
 .main-content {
-    margin-left: 20px;
-    margin-top: 60px;
+    margin-left: 250px;
+    margin-block: 2.8rem;
     padding: 20px;
     width:80%;
+    height: auto;
     position: relative;
+    /* background-color: #690c11; */
 }
 
 

@@ -336,10 +336,12 @@
 
 .card-prices .discount {
     background-color: #dc3545;
-    color: #fff;
+     color: #fff;
     font-size: 12px;
     padding: 2px 5px;
-    border-radius: 4px;
+    /* border-radius: 4px;  */
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
+    padding-right: 5px;
 }
 
 .card-name-rating {
@@ -405,6 +407,11 @@
     font-size: 20px;
     cursor: pointer;
 }
+.card .stock-status, #popup-status{
+    font-size: 16px;
+    color:#ba131c;
+    font-weight: bold;
+}
 .add-to-cart {
     /* background: #28a745;
     color: #fff; */
@@ -414,6 +421,14 @@
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
+}
+
+.add-to-cart:disabled {
+    background-color: #ccc;  /* Light gray background */
+    color: #666;             /* Darker gray text */
+    cursor: not-allowed;     /* Change cursor to indicate it's not clickable */
+    opacity: 0.5;            /* Reduce opacity to make it look faint */
+    border: 1px solid #bbb;  /* Slight border to distinguish */
 }
 
 /* .add-to-cart:hover {
@@ -482,20 +497,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
-  .thumbnail-images {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .thumbnail-images img {
-    width: 60px;
-    height: 60px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    cursor: pointer;
-    object-fit: cover;
-  }
   
   .popup-right {
     flex: 2;
@@ -539,6 +540,15 @@
     color: #555;
   }
   
+  #popup-discount{
+    background-color: #dc3545;
+    color: #fff;
+   font-size: 12px;
+   padding: 2px 5px;
+   /* border-radius: 4px;  */
+   clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
+   padding-right: 5px;
+  }
   
   
   .quantity-add {
@@ -589,11 +599,17 @@
   }
   
   
-  .add-to-cart-btn {
+  /* .add-to-cart-btn {
     cursor: pointer;
     font-size: 14px;
+  } */
+  .popup-add-to-cart:disabled, .buy-now-btn:disabled{
+    background-color: #ccc;  /* Light gray background */
+    color: #666;             /* Darker gray text */
+    cursor: not-allowed;     /* Change cursor to indicate it's not clickable */
+    opacity: 0.5;            /* Reduce opacity to make it look faint */
+    border: 1px solid #bbb;
   }
-  
   
   .no-scroll {
     overflow: hidden;

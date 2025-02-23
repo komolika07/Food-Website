@@ -1,11 +1,11 @@
-.main-content {
+/* .main-content {
     /* margin-left: 250px; */
-    margin-top: 60px;
+    /* margin-top: 60px;
     padding: 20px;
     width: calc(100% - 250px);
     position: relative;
-}
-.main-content a{
+} */ 
+/* .main-content a{
     cursor: pointer;
     text-decoration: none;
     color:#000;
@@ -86,4 +86,159 @@
 }
 .form-actions button:hover{
     background-color:#690c11;
+}
+
+.is-this-deal{
+    width:30%;
+}
+.is-this-deal input{
+    width:auto;
+}
+.is-this-deal span{
+    width:30%;
+    font-weight: bold;
+    font-size: 1.2rem;
+} */
+
+
+/* General Styles */
+.main-content a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s ease-in-out;
+}
+.main-content a:hover {
+    color: #690c11;
+}
+
+/* Form Styling */
+.add-item-form {
+    max-width:1000px;
+    width: 100%;
+    height: auto;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Success & Error Messages */
+.add-item-form .alert.success {
+    border: 1px solid rgb(2, 60, 2);
+    color: rgb(2, 128, 2);
+    background-color: rgb(200, 238, 200);
+    padding: .8rem;
+    border-radius: 5px;
+}
+.add-item-form .alert.error {
+    border: 1px solid rgb(107, 32, 3);
+    color: rgb(161, 32, 3);
+    background-color: rgb(226, 175, 165);
+    padding: .8rem;
+    border-radius: 5px;
+}
+
+/* Input Groups */
+.food-item-group {
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+.food-item-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.food-item-group input,
+.food-item-group select,
+.food-item-group textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+/* Flexbox for Inline Inputs */
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* File Upload Styling */
+.custom-file input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.custom-file {
+    position: relative;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+/* Submit Button */
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+.form-actions button {
+    background-color: #800e13;
+    color: #fff;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+.form-actions button:hover {
+    background-color: #690c11;
+}
+
+/* Deal Checkbox */
+.is-this-deal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.is-this-deal input {
+    width: auto;
+    margin-left: 10px;
+    transform: scale(1.2);
+}
+.is-this-deal span {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Deal-Specific Fields (Initially Hidden) */
+.deal-form {
+    display: none;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+        gap: 0;
+    }
+    .is-this-deal {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

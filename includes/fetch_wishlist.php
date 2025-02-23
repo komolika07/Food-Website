@@ -23,7 +23,7 @@ $user_id = $_SESSION['user-id'];
 
 // Fetch wishlist items
 $query = "
-    SELECT w.product_id, p.name, p.rating, p.discounted_price, p.price, p.image_path, p.description
+    SELECT w.product_id, p.name, p.rating, p.discounted_price, p.discount, p.price, p.image_path, p.status, p.description
     FROM wishlist w
     JOIN menu_items p ON w.product_id = p.id
     WHERE w.user_id = ?

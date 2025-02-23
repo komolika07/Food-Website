@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const addAddressBtn = document.getElementById("add-address-btn");
 
     if (addAddressBtn) {
-       addAddressBtn.addEventListener("click", function () {
+        addAddressBtn.addEventListener("click", function () {
 
             const addressList = document.getElementById("address-list");
 
@@ -16,37 +16,63 @@ document.addEventListener("DOMContentLoaded", () => {
             addressForm.innerHTML = `
         <?php if (!$max_addresses_reached): ?>
             <form action="../includes/manageAddress.php" method="post">
-                                <input type="hidden" id="user-id" name="user_id" value="">
-                                     <div class="input">
-                                        <label for="user-name">Name*</label>
-                                        <input type="text" name="user-name" placeholder="Enter Name" required>
-                                    </div>
-                                     <div class="input">
-                                        <label for="phone">Phone*</label>
-                                        <input type="tel" name="phone" placeholder="Enter Phone number" required>
-                                    </div>
-                                    <div class="input">
-                                        <label for="address_line">Address Line*</label>
-                                        <input type="text" name="address_line" placeholder="Enter your address" required>
-                                    </div>
-                                    <div class="input">
-                                        <label for="city">City*</label>
-                                        <input type="text" name="city" placeholder="Enter your city" required>
-                                    </div>
-                                    <div class="input">
-                                        <label for="state">State*</label>
-                                        <input type="text" value="Maharashtra" disabled>
-                                        <!-- Hidden input for state value -->
-                                        <input type="hidden" name="state" value="Maharashtra">
-                                    </div>
+                                    <div class="form-container">
+                                    <input type="hidden" id="user-id" name="user_id" value="">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="name">Name</label>
+                                                <input type="text" id="name" name="user-name" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="phone">10-digit mobile number</label>
+                                                <input type="tel" id="phone" name="phone" placeholder="">
+                                            </div>
+                                        </div>
 
-                                    <div class="input">
-                                        <label for="zip">ZIP Code*</label>
-                                        <input type="text" name="zip" placeholder="Enter ZIP code" required>
-                                    </div>
-                                    <div class="actions">
-                                        <button type="submit" class="save-address-btn primary-btn">Save Address</button>
-                                        <button type="button" class="remove-address-btn secondary-btn">Remove</button>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="pincode">Pincode</label>
+                                                <input type="text" id="pincode" name="zip" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="locality">Locality</label>
+                                                <input type="text" id="locality" name="Locality" placeholder="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" style="margin-bottom: 15px;">
+                                            <label for="address">Address (Area and Street)</label>
+                                            <textarea id="address" name="address_line" placeholder=""></textarea>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="city">City/District/Town</label>
+                                                <input type="text" id="city" name="city" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="state">State</label>
+                                                <input type="text" value="Maharashtra" disabled>
+                                                 <input type="hidden" name="state" value="Maharashtra">
+                                                
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="landmark">Landmark (Optional)</label>
+                                                <input type="text" id="landmark" name="landmark" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="alt-phone">Alternate Phone (Optional)</label>
+                                                <input type="tel" id="alt-phone" name="alt-phone" placeholder="">
+                                            </div>
+                                        </div>
+                                   
+                                        <div class="actions">
+                                            <button type="submit" class="save-address-btn primary-btn">Save Address</button>
+                                            <button type="button" class="remove-address-btn secondary-btn">Remove</button>
+                                        </div>
                                     </div>
 
                                     <hr>
@@ -66,15 +92,16 @@ document.addEventListener("DOMContentLoaded", () => {
             if (userIdInput) {
                 userIdInput.value = userId;  // Dynamically set the hidden input's value
             }
-        
 
-     // Add event listener to remove button
-        addressForm.querySelector(".remove-address-btn").addEventListener("click", function () {
-            addressList.removeChild(addressForm);
+
+            // Add event listener to remove button
+            addressForm.querySelector(".remove-address-btn").addEventListener("click", function () {
+                addressList.removeChild(addressForm);
+            });
         });
-    });
     }
 });
+
 
 
 
@@ -128,6 +155,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const addressLine = button.dataset.addressLine;
             const city = button.dataset.city;
             const zip = button.dataset.zip;
+            const locality = button.dataset.locality;
+            const landmark = button.dataset.landmark;
+            const alt_phone = button.dataset.alt_phone;
 
             // Fill the form inputs
             document.getElementById("edit-user-name").value = userName;
@@ -136,6 +166,9 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("edit-address-line").value = addressLine;
             document.getElementById("edit-city").value = city;
             document.getElementById("edit-zip").value = zip;
+            document.getElementById("edit-locality").value=locality;
+            document.getElementById("edit-landmark").value=landmark;
+            document.getElementById("edit-alt-phone").value=alt_phone;
 
             // Show the modal
             editModal.classList.add("show");
@@ -144,13 +177,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Close modal on cancel
-    if(cancelEditBtn){
+    if (cancelEditBtn) {
         cancelEditBtn.addEventListener("click", () => {
             editModal.classList.remove("show");
             body.classList.remove('no-scroll');
         });
     }
-    
+
 });
 
 

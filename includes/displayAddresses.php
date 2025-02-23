@@ -18,21 +18,30 @@ if ($result->num_rows > 0) {
         echo "<p>" . htmlspecialchars($row['user_name']) . "</p>";
         echo "<p>" . htmlspecialchars($row['phone']) . "</p>";
         echo "</div>";
-        echo "<p>Address Line: " . htmlspecialchars($row['address_line']) . "</p>";
-        echo "<p>City: " . htmlspecialchars($row['city']) . "</p>";
-        echo "<p>State: " . htmlspecialchars($row['state']) . "</p>";
-        echo "<p>ZIP Code: " . htmlspecialchars($row['zip_code']) . "</p>";
+        // echo "<p>Address Line: " . htmlspecialchars($row['address_line']) . "</p>";
+        // echo "<p>City: " . htmlspecialchars($row['city']) . "</p>";
+        // echo "<p>State: " . htmlspecialchars($row['state']) . "</p>";
+        // echo "<p>ZIP Code: " . htmlspecialchars($row['zip_code']) . "</p>";
+
+        echo "<p>" . htmlspecialchars($row['locality']) . ", " . htmlspecialchars($row['address_line']) . ", " . htmlspecialchars($row['city']) . ", " . "</p>";
+        echo "<p>" . htmlspecialchars(($row['state'])) . " - " . htmlspecialchars($row['zip_code']) . "</p>";
+        echo "<div class='actions'>";
         echo "<button class='edit-address primary-btn'
         data-user-name='" . htmlspecialchars($row['user_name']) . "' 
         data-phone='" . htmlspecialchars($row['phone']) . "' 
         data-id='" . htmlspecialchars($row['address_id']) . "' 
-        data-address-line='" .htmlspecialchars($row['address_line']) . "'
-        data-city='" .htmlspecialchars($row['city']) . "'
-        data-state='" .htmlspecialchars($row['state']) . "'
-        data-zip='" .htmlspecialchars($row['zip_code']) . "'
-        >Edit</button>";
-        echo "<button class='delete-address secondary-btn' data-id='" . htmlspecialchars($row['address_id']) . "'>Delete</button>";
+        data-address-line='" . htmlspecialchars($row['address_line']) . "'
+        data-city='" . htmlspecialchars($row['city']) . "'
+        data-state='" . htmlspecialchars($row['state']) . "'
+        data-zip='" . htmlspecialchars($row['zip_code']) . "'
+        data-locality='" . htmlspecialchars($row['locality']) . "'
+        data-landmark='" . htmlspecialchars($row['landmark']) . "'
+        data-alt-phone='" . htmlspecialchars($row['alt_phone']) . "'>
+        <i class='fa-solid fa-pen-to-square'></i></button>";
+        echo "<button class='delete-address' data-id='" . htmlspecialchars($row['address_id']) . "'><i class='fa-solid fa-trash'></i></button>";
         echo "</div>";
+        echo "</div>";
+
     }
 } else {
     echo "<p>No addresses found. Please add your address.</p>";

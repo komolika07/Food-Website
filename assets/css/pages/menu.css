@@ -219,11 +219,13 @@
 }
 
 .card-prices .discount {
-    background-color: #dc3545;
-    color: #fff;
-    font-size: 12px;
-    padding: 2px 5px;
-    border-radius: 4px;
+  background-color: #dc3545;
+  color: #fff;
+ font-size: 12px;
+ padding: 2px 5px;
+ /* border-radius: 4px;  */
+ clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
+ padding-right: 5px;
 }
 
 .card-name-rating {
@@ -289,6 +291,12 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+.card .stock-status, #popup-status{
+  font-size: 16px;
+  color:#ba131c;
+  font-weight: bold;
+}
 .add-to-cart {
     /* background: #28a745;
     color: #fff; */
@@ -300,6 +308,13 @@
     font-weight: bold;
 }
 
+.add-to-cart:disabled {
+  background-color: #ccc;  /* Light gray background */
+  color: #666;             /* Darker gray text */
+  cursor: not-allowed;     /* Change cursor to indicate it's not clickable */
+  opacity: 0.5;            /* Reduce opacity to make it look faint */
+  border: 1px solid #bbb;  /* Slight border to distinguish */
+}
 .add-to-cart:hover {
     /* background: #218838; */
 }
@@ -423,7 +438,15 @@
     color: #555;
   }
   
-  
+  #popup-discount{
+    background-color: #dc3545;
+    color: #fff;
+   font-size: 12px;
+   padding: 2px 5px;
+   /* border-radius: 4px;  */
+   clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
+   padding-right: 5px;
+  }
   
   .quantity-add {
     display: flex;
@@ -476,10 +499,12 @@
   
   
   
-  
-  .add-to-cart-btn {
-    cursor: pointer;
-    font-size: 14px;
+  .popup-add-to-cart:disabled, .buy-now-btn:disabled{
+    background-color: #ccc;  /* Light gray background */
+    color: #666;             /* Darker gray text */
+    cursor: not-allowed;     /* Change cursor to indicate it's not clickable */
+    opacity: 0.5;            /* Reduce opacity to make it look faint */
+    border: 1px solid #bbb;
   }
   
   

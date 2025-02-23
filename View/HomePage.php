@@ -151,16 +151,23 @@ include "../includes/auth.php";
 
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
+
+            $status = htmlspecialchars($row['status']);
+            $isOutOfStock = strtolower($status) === 'out-of-stock'; // Convert to lowercase for consistency
+
+
             echo '<div class="card" 
                                 data-id="' . htmlspecialchars($row['id']) . '"
                                 data-name="' . htmlspecialchars($row['name']) . '" 
                                 data-rating="' . htmlspecialchars($row['rating']) . '" 
                                 data-price="' . htmlspecialchars($row['discounted_price']) . '" 
                                 data-original-price="' . htmlspecialchars($row['price']) . '" 
+                                data-discount="' . htmlspecialchars($row['discount']) . '" 
                                 data-image="../admin/' . htmlspecialchars($row['image_path']) . '" 
                                 data-description="' . htmlspecialchars($row['description']) . '"
                                 data-meal-op ="' . htmlspecialchars($row['meal_op']) . '"
-                                data-category ="' . htmlspecialchars($row['category']) . '" >';
+                                data-category ="' . htmlspecialchars($row['category']) . '"
+                                data-status="' . $status . '" >';
 
             echo '<div class="card-icons">';
             echo '<button class="wishlist-btn" title="Add To Wishlist"><i class="fa fa-heart"></i></button>';
@@ -185,13 +192,9 @@ include "../includes/auth.php";
               echo '<span class="discount">-' . $discount . '%</span>';
             }
             echo '</div>';
+            echo '<p class="stock-status">' . ($isOutOfStock ? 'Out of Stock' : '') . '</p>';
             echo '<div class="card-actions">';
-            echo '<button class="add-to-cart primary-btn" data-id="' . $row['id'] . '">Add To Cart</button>';
-
-
-
-
-
+            echo '<button class="add-to-cart primary-btn" data-id="' . $row['id'] . '" ' . ($isOutOfStock ? 'disabled' : '') . '>Add To Cart</button>';
             echo '</div>';
             echo '</div>';
           }
@@ -214,16 +217,21 @@ include "../includes/auth.php";
 
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
+
+            $status = htmlspecialchars($row['status']);
+            $isOutOfStock = strtolower($status) === 'out-of-stock'; // Convert to lowercase for consistency
             echo '<div class="card" 
                                 data-id="' . htmlspecialchars($row['id']) . '"
                                 data-name="' . htmlspecialchars($row['name']) . '" 
                                 data-rating="' . htmlspecialchars($row['rating']) . '" 
                                 data-price="' . htmlspecialchars($row['discounted_price']) . '" 
                                 data-original-price="' . htmlspecialchars($row['price']) . '" 
+                                data-discount="' . htmlspecialchars($row['discount']) . '" 
                                 data-image="../admin/' . htmlspecialchars($row['image_path']) . '" 
                                 data-description="' . htmlspecialchars($row['description']) . '"
                                 data-meal-op ="' . htmlspecialchars($row['meal_op']) . '"
-                                data-category ="' . htmlspecialchars($row['category']) . '" >';
+                                data-category ="' . htmlspecialchars($row['category']) . '" 
+                                data-status="' . $status . '">';
 
             echo '<div class="card-icons">';
             echo '<button class="wishlist-btn" title="Add To Wishlist"><i class="fa fa-heart"></i></button>';
@@ -248,12 +256,9 @@ include "../includes/auth.php";
               echo '<span class="discount">-' . $discount . '%</span>';
             }
             echo '</div>';
+            echo '<p class="stock-status">' . ($isOutOfStock ? 'Out of Stock' : '') . '</p>';
             echo '<div class="card-actions">';
-            echo '<button class="add-to-cart primary-btn" data-id="' . $row['id'] . '">Add To Cart</button>';
-
-
-
-
+            echo '<button class="add-to-cart primary-btn" data-id="' . $row['id'] . '" ' . ($isOutOfStock ? 'disabled' : '') . '>Add To Cart</button>';
 
             echo '</div>';
             echo '</div>';
@@ -278,16 +283,20 @@ include "../includes/auth.php";
 
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
+            $status = htmlspecialchars($row['status']);
+            $isOutOfStock = strtolower($status) === 'out-of-stock'; // Convert to lowercase for consistency
             echo '<div class="card" 
                                 data-id="' . htmlspecialchars($row['id']) . '"
                                 data-name="' . htmlspecialchars($row['name']) . '" 
                                 data-rating="' . htmlspecialchars($row['rating']) . '" 
                                 data-price="' . htmlspecialchars($row['discounted_price']) . '" 
                                 data-original-price="' . htmlspecialchars($row['price']) . '" 
+                                data-discount="' . htmlspecialchars($row['discount']) . '" 
                                 data-image="../admin/' . htmlspecialchars($row['image_path']) . '" 
                                 data-description="' . htmlspecialchars($row['description']) . '"
                                 data-meal-op ="' . htmlspecialchars($row['meal_op']) . '"
-                                data-category ="' . htmlspecialchars($row['category']) . '" >';
+                                data-category ="' . htmlspecialchars($row['category']) . '"
+                                data-status="' . $status . '" >';
 
             echo '<div class="card-icons">';
             echo '<button class="wishlist-btn" title="Add To Wishlist"><i class="fa fa-heart"></i></button>';
@@ -311,14 +320,10 @@ include "../includes/auth.php";
               echo '<span class="discount">-' . $discount . '%</span>';
             }
             echo '</div>';
+            echo '<p class="stock-status">' . ($isOutOfStock ? 'Out of Stock' : '') . '</p>';
             echo '<div class="card-actions">';
-            echo '<button class="add-to-cart primary-btn" data-id="' . $row['id'] . '">Add To Cart</button>';
+            echo '<button class="add-to-cart primary-btn" data-id="' . $row['id'] . '" ' . ($isOutOfStock ? 'disabled' : '') . '>Add To Cart</button>';
 
-
-
-
-
-            echo '</div>';
             echo '</div>';
           }
         } else {
@@ -342,6 +347,8 @@ include "../includes/auth.php";
 
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
+            $status = htmlspecialchars($row['status']);
+            $isOutOfStock = strtolower($status) === 'out-of-stock'; // Convert to lowercase for consistency
             echo '<div class="card" 
                                 data-id="' . htmlspecialchars($row['id']) . '"
                                 data-name="' . htmlspecialchars($row['name']) . '" 
@@ -351,7 +358,9 @@ include "../includes/auth.php";
                                 data-image="../admin/' . htmlspecialchars($row['image_path']) . '" 
                                 data-description="' . htmlspecialchars($row['description']) . '"
                                 data-meal-op ="' . htmlspecialchars($row['meal_op']) . '"
-                                data-category ="' . htmlspecialchars($row['category']) . '" >';
+                                data-category ="' . htmlspecialchars($row['category']) . '" 
+                                data-discount="' . htmlspecialchars($row['discount']) . '" 
+                                data-status="' . $status . '">';
 
             echo '<div class="card-icons">';
             echo '<button class="wishlist-btn" title="Add To Wishlist"><i class="fa fa-heart"></i></button>';
@@ -376,8 +385,10 @@ include "../includes/auth.php";
               echo '<span class="discount">-' . $discount . '%</span>';
             }
             echo '</div>';
+            echo '<p class="stock-status">' . ($isOutOfStock ? 'Out of Stock' : '') . '</p>';
             echo '<div class="card-actions">';
-            echo '<button class="add-to-cart primary-btn" data-id="' . $row['id'] . '">Add To Cart</button>';
+            echo '<button class="add-to-cart primary-btn" data-id="' . $row['id'] . '" ' . ($isOutOfStock ? 'disabled' : '') . '>Add To Cart</button>';
+
             echo '</div>';
             echo '</div>';
           }
@@ -404,14 +415,15 @@ include "../includes/auth.php";
         </div>
       </div>
       <div class="popup-right">
-        <h2 id="popup-category">category</h2>
-        <h2 id="popup-title">Product Name</h2>
+        <h2 id="popup-category"></h2> <!-- category -->
+        <h2 id="popup-title"></h2> 
         <p class="rating">
           ⭐ <span id="popup-rating"></span>.0
         </p>
         <div class="price">
-          <span id="popup-price">$24.00</span> -
-          <span id="popup-original-price">$40.00</span>
+          <span id="popup-price"></span> 
+          <span id="popup-original-price"></span>
+          <span id="popup-discount"></span>
         </div>
         <p id="popup-description">
           Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
@@ -421,6 +433,9 @@ include "../includes/auth.php";
             <button class="decrement-btn">-</button>
             <input type="number" value="1" min="1" class="quantity-input" name="quantity">
             <button class="increment-btn">+</button>
+          </div>
+          <div id="popup-status">
+            
           </div>
           <div class="action-buttons">
             <button class="popup-add-to-cart primary-btn" data-id="">Add To Cart</button>

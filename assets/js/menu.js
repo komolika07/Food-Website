@@ -68,6 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".buy-now-btn").addEventListener("click", function () {
+        let productId = this.getAttribute("data-id");
+        let quantity = document.querySelector(".quantity-input").value;
+
+        // Redirect to checkout with Buy Now parameters
+        window.location.href = `checkout.php?buy_now=1&product_id=${productId}&quantity=${quantity}`;
+    });
+});
 
 
 

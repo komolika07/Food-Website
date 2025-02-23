@@ -25,7 +25,7 @@ $stmt->bind_result($address_count);
 $stmt->fetch();
 $stmt->close();
 
-if ($address_count > 3) {
+if ($address_count >= 3) {
     // You can display a message or disable the Add Address button
     $max_addresses_reached = true;
 } else {
@@ -198,36 +198,56 @@ $stmt->close();
                         <!-- Hidden Input for Address ID -->
                         <input type="hidden" id="edit-address-id" name="id">
 
-                        <div class="input">
-                            <label for="edit-user-name">Name*</label>
-                            <input type="text" id="edit-user-name" name="user-name" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="edit-user-name">Name*</label>
+                                <input type="text" id="edit-user-name" name="user-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-phone">Phone*</label>
+                                <input type="text" id="edit-phone" name="phone" maxlength="15">
+                            </div>
                         </div>
 
-                        <div class="input">
-                            <label for="edit-phone">Phone*</label>
-                            <input type="text" id="edit-phone" name="phone" maxlength="15">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="edit-zip">ZIP Code*</label>
+                                <input type="text" id="edit-zip" name="zip" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-locality">Locality*</label>
+                                <input type="text" id="edit-locality" name="locality" required>
+                            </div>
                         </div>
 
-                        <div class="input">
+
+                        <div class="form-group">
                             <label for="edit-address-line">Address Line*</label>
-                            <input type="text" id="edit-address-line" name="address_line" required>
+                            <textarea id="edit-address-line" name="address_line" required></textarea>
                         </div>
-                        <div class="flex">
-                            <div class="input">
+
+                        <div class="form-row">
+                            <div class="form-group">
                                 <label for="edit-city">City*</label>
                                 <input type="text" id="edit-city" name="city" required>
                             </div>
-                            <div class="input">
+                            <div class="form-group">
                                 <label for="edit-state">State*</label>
                                 <input type="text" value="Maharashtra" disabled>
                                 <input type="hidden" id="edit-state" name="state" value="Maharashtra">
                             </div>
-                            <div class="input">
-                                <label for="edit-zip">ZIP Code*</label>
-                                <input type="text" id="edit-zip" name="zip" required>
+
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="landmark">Landmark (Optional)</label>
+                                <input type="text" id="edit-landmark" name="landmark" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="alt-phone">Alternate Phone (Optional)</label>
+                                <input type="tel" id="edit-alt-phone" name="alt-phone" placeholder="">
                             </div>
                         </div>
-
                         <div class="actions">
                             <button type="submit" class="primary-btn">Save Changes</button>
                             <button type="button" id="cancel-edit-btn" class="secondary-btn">Cancel</button>
@@ -253,21 +273,21 @@ $stmt->close();
                             <h4 class="Booking_id">
                                 #Booking Id : <?php echo htmlspecialchars($booking['booking_id']) ?>
                             </h4>
-                            <h5 class="booking_date">
-                                Booking Date: <?php echo htmlspecialchars($booking['booking_date']); ?>
-                                at <?php echo htmlspecialchars($booking['booking_time']); ?>
-                            </h5>
-                            <p><strong>Guests:</strong> <?php echo htmlspecialchars($booking['guests']); ?></p>
-                            <p><strong>Special Requests:</strong>
+
+                            <p>Booking Date: <?php echo htmlspecialchars($booking['booking_date']); ?>
+                                at <?php echo htmlspecialchars($booking['booking_time']); ?></p>
+
+                            <p>Guests: <?php echo htmlspecialchars($booking['guests']); ?></p>
+                            <p>Special Requests:
                                 <?php echo !empty($booking['special_requests']) ? htmlspecialchars($booking['special_requests']) : 'None'; ?>
                             </p>
-                            <p><strong>Status:</strong>
+                            <p class="status">
                                 <span class="status-<?php echo strtolower($booking['status']); ?>">
                                     <?php echo htmlspecialchars($booking['status']); ?>
                                 </span>
                             </p>
                             <?php if ($booking['status'] == 'Accepted'): ?>
-                                <p><strong>Table Number:</strong> <?php echo htmlspecialchars($booking['table_number']); ?></p>
+                                <p>Table Number: <?php echo htmlspecialchars($booking['table_number']); ?></p>
                             <?php endif; ?>
 
                             <?php if ($booking['status'] == 'Pending'): ?>
@@ -291,7 +311,7 @@ $stmt->close();
         <div id="my-wishlist" class="section">
             <h2>Wishlist</h2>
             <div id="wishlist-container" class="wishlist-container">
-                
+
             </div>
         </div>
     </main>

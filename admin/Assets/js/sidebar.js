@@ -43,6 +43,7 @@ editProfileBtn.addEventListener("click", () => {
 // Close Modal
 closeBtn.addEventListener("click", () => {
     profileContainer.style.display = "none";
+    settingContainer.style.display = "none";
     body.classList.remove("no-scroll");
 });
 
@@ -50,6 +51,29 @@ closeBtn.addEventListener("click", () => {
 window.addEventListener("click", (event) => {
     if (event.target === profileContainer) {
         profileContainer.style.display = "none";
+        settingContainer.style.display = "none";
+        body.classList.remove("no-scroll");
+    }
+});
+
+const settingContainer = document.getElementById("settingcontainer");
+const settingBtn = document.getElementById("settingBtn");
+const settingcloseBtn = document.querySelector(".settingclose");
+
+settingBtn.addEventListener("click", () =>{
+    settingContainer.style.display ="flex";
+    body.classList.add("no-scroll");
+});
+
+settingcloseBtn.addEventListener("click", () => {
+    settingContainer.style.display = "none";
+    body.classList.remove("no-scroll");
+});
+
+// Close Modal on Outside Click
+window.addEventListener("click", (event) => {
+    if (event.target === profileContainer) {
+        settingContainer.style.display = "none";
         body.classList.remove("no-scroll");
     }
 });

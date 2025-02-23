@@ -1,10 +1,10 @@
-.main-content {
+/* .main-content { */
     /* margin-left: 250px; */
-    margin-top: 60px;
+    /* margin-top: 60px;
     padding: 20px;
     width:80%;
     position: relative;
-}
+} */
 
 /* menu list css */
 
@@ -214,40 +214,42 @@
     left: 50%;
     transform: translate(-50%, -40%);
     width: 80vw;
-    /* display: none; */
-/* }   */
+    height: 100vh;
+    display: none;
+}   */
 
 #edit-form {
-    position: absolute;
-    top: 50%;
+    position: absolute; /* Stay centered even if page scrolls */
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 200; /* Ensures it is above other elements */
+    z-index: 200;
     background-color: #fff;
     padding: 20px;
     max-width: 900px;
-    display: none;
-    width: 100%;
-    height:auto;
+    width: 90%; /* Make it responsive */
+    max-height: 90vh; /* Prevent it from taking the full screen */
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    overflow-y: auto; /* Scrollable for smaller screens */
+    overflow-y: auto; /* Scrollable */
+    display: none; /* Initially hidden */
 }
+
 .input{
     width: 100%;
 }
 /* Overlay to dim the background */
 .main-content::after {
     content: '';
-    position: absolute;
+    position: fixed; /* Covers the entire viewport */
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100vw; /* Full screen width */
+    height: 100vh; /* Full screen height */
     background-color: rgba(0, 0, 0, 0.5);
-    display: none; 
+    display: none;
     z-index: 100;
- } 
+}
 
  .flex{
     display: flex;

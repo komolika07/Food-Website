@@ -17,7 +17,7 @@
 
 <body>
 
-<!-- to handle individual page css file adding -->
+    <!-- to handle individual page css file adding -->
     <?php
     if (!empty($pageStyles)) {
         foreach ($pageStyles as $style) {
@@ -26,7 +26,7 @@
     }
     ?>
 
-<!-- handling user session login -->
+    <!-- handling user session login -->
     <?php
     session_start(); // Start the session
     include("../../includes/db.php");
@@ -39,11 +39,11 @@
 
     $id = $_SESSION['id'];
 
-    
+
     ?>
 
 
-<!-- sidebar included -->
+    <!-- sidebar included -->
     <?php
     include '../includes/layout/sidebar.php';
     ?>
@@ -87,8 +87,47 @@
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="profile-btn primary-btn">Update Profile</button>
-                <a href="../includes/logout.php" class="logout-btn secondary-btn">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
+                <div class="profile-actions">
+                    <button type="submit" class="profile-btn primary-btn">Update Profile</button>
+                    <a href="../includes/logout.php" class="logout-btn secondary-btn">Logout <i
+                            class="fa-solid fa-right-from-bracket"></i></a>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+
+    <!-- setting code for password changing -->
+    <div id="settingcontainer" class="setting-contain">
+        <?php
+        // Fetch user details
+        $select_user = mysqli_query($conn, "SELECT * FROM `admin_user` WHERE id = '$id'") or die("query failed");
+        if (mysqli_num_rows($select_user) > 0) {
+            $fetch_user = mysqli_fetch_assoc($select_user);
+        }
+        ?>
+
+        <!-- profile form -->
+        <div class="setting-content">
+            <span class="settingclose">&times;</span>
+            <h3>Setting</h3>
+            <form action="../includes/setting.php" id="settingForm" method="post">
+                <input type="hidden" id="user_id" name="user-id" value="<?php echo $id ?>">
+                <!-- Username  -->
+                <label>Old Password*</label>
+                <input type="password" name="old_password" required><br><br>
+
+                <label>New Password*</label>
+                <input type="password" name="new_password" required><br><br>
+
+                <label>Confirm New Password*</label>
+                <input type="password" name="confirm_password" required><br><br>
+
+                <div class="setting-update">
+                    <button type="submit" class="change-password-btn primary-btn">Change Password</button>
+                </div>
 
             </form>
         </div>
