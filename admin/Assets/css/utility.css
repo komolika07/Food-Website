@@ -46,7 +46,7 @@ p{
     font-family: 'Robota' ,sans-serif;
     font-size: 16px;
     color:var(--grey);
-    line-height: 1.4rem;
+    /* line-height: 1.4rem; */
 }
 
 .primary-btn{

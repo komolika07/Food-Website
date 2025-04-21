@@ -25,3 +25,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['address_id'])) {
     $stmt->close();
     $conn->close();
 }
+?>

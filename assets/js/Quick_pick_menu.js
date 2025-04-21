@@ -39,36 +39,36 @@
 
 //menu list
 
-const All_list = [
-    {
-        id: 1,
-        name: "Veg Fried Rice",
-        Rating: 5.0,
-        image: './Home/images/vegFriedRice.png',
-        price: 120,
-    },
-    {
-        id: 2,
-        name: "Veg Hakka Noodles",
-        Rating: 3.5,
-        image: './Home/images/vegFriedRice.png',
-        price: 100,
-    },
-    {
-        id: 3,
-        name: "Veg Manchurian",
-        Rating: 5.0,
-        image: './Home/images/vegFriedRice.png',
-        price: 100,
-    },
-    {
-        id: 4,
-        name: "Veg Paneer Crispy",
-        Rating: 5.0,
-        image: './Home/images/vegFriedRice.png',
-        price: 100,
-    },
-];
+// const All_list = [
+//     {
+//         id: 1,
+//         name: "Veg Fried Rice",
+//         Rating: 5.0,
+//         image: './Home/images/vegFriedRice.png',
+//         price: 120,
+//     },
+//     {
+//         id: 2,
+//         name: "Veg Hakka Noodles",
+//         Rating: 3.5,
+//         image: './Home/images/vegFriedRice.png',
+//         price: 100,
+//     },
+//     {
+//         id: 3,
+//         name: "Veg Manchurian",
+//         Rating: 5.0,
+//         image: './Home/images/vegFriedRice.png',
+//         price: 100,
+//     },
+//     {
+//         id: 4,
+//         name: "Veg Paneer Crispy",
+//         Rating: 5.0,
+//         image: './Home/images/vegFriedRice.png',
+//         price: 100,
+//     },
+// ];
 
 
 

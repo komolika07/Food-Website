@@ -9,25 +9,9 @@ include '../includes/Layout/navbar.php';
 ?>
 
 <?php
-
 require_once '../includes/db.php';
-
 include "../includes/auth.php";
-
 $user_id = $_SESSION['user-id'];
-
-// Fetch cart items for the logged-in user
-// $sql = "
-//     SELECT c.id AS cart_id, m.id AS product_id, m.name, m.image_path, m.price, m.discounted_price, c.quantity 
-//     FROM cart c 
-//     JOIN menu_items m ON c.product_id = m.id 
-//     WHERE c.user_id = ?";
-// $stmt = $conn->prepare($sql);
-// $stmt->bind_param("i", $user_id);
-// $stmt->execute();
-// $result = $stmt->get_result();
-
-
 
 $sql = "SELECT c.id AS cart_id, c.quantity, 
                p.name, p.image_path, p.price, p.discounted_price 
@@ -41,7 +25,6 @@ $result = $stmt->get_result();
 $cart_items = $result->fetch_all(MYSQLI_ASSOC);
 
 
-
 $subtotal = 0;
 foreach ($cart_items as $item) {
     $subtotal += $item['discounted_price'] * $item['quantity'];
@@ -52,7 +35,9 @@ $delivery_charge = 20.00;
 
 // Calculate total
 $total = $subtotal + $delivery_charge;
-
+$_SESSION['subtotal'] = $subtotal;
+$_SESSION['delivery_charge'] = $delivery_charge;
+$_SESSION['total_price'] = $total; 
 ?>
 
 <section class="Common-sec container">
@@ -128,7 +113,7 @@ $total = $subtotal + $delivery_charge;
                 <span>Total:</span>
                 <span>₹<?= number_format($total, 2) ?></span>
             </div>
-            <button class="checkout-btn primary-btn" onclick="window.location.href='../view/checkout.php';">Proceed to Checkout</button>
+            <button class="checkout-btn primary-btn" onclick="checkoutPage(true)">Proceed to Checkout</button>
         </div>
     </div>
 

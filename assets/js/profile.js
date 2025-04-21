@@ -19,18 +19,25 @@ function showprofileSection(sectionId) {
 }
 
 // Logout function
-function logout(event) {
-    const confirmation = confirm("Do you want to log out?");
-    if (!confirmation) {
-        event.preventDefault(); // Stop the link from redirecting
-    }
-    else{
-        window.location.href = "loginForm.php"; // Replace with your login page
-
-    }
-    // alert('You have been logged out.');
-    // Redirect to login page or clear session
+function confirmLogout() {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You will be logged out of your account.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Logout",
+        cancelButtonText: "Cancel",
+        customClass: {
+            confirmButton: 'custom-confirm-btn primary-btn',
+            cancelButton: 'custom-cancel-btn secondary-btn'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "../includes/logout.php";
+        }
+    });
 }
+
 
 
 
@@ -51,4 +58,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     const activeSection = document.getElementById(section);
     if (activeSection) activeSection.classList.add("active");
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("../includes/fetch_orders.php") // Fetch orders from PHP
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector(".order-display-container").innerHTML = data;
+        })
+        .catch(error => console.error("Error fetching orders:", error));
 });

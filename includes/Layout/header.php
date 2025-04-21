@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../assets/css/animation.css?v=1.0">
   <link rel="stylesheet" href="../assets/css/navbar_footer.css?v=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- <link rel="stylesheet" href="../Home/css/homepage.css">
   <link rel="stylesheet" href="../Home/css/mediaQuery.css">

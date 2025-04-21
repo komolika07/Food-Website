@@ -1,3 +1,9 @@
+.deals-section{
+    margin-inline: 1rem;
+    min-height: 100vh;
+    height: auto;
+}
+
 .deals-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -6,12 +12,24 @@
 }
 
 .deal-card {
+    position: relative;
     display: flex;
+    justify-content: space-between;
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* border-radius: 10px; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border-radius: 8px;
     overflow: hidden;
     padding: 15px;
+}
+.deal-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.6);
+}
+.deal-image{
+    display: flex;
+    align-items: center;
 }
 
 .deal-image img {
@@ -26,9 +44,11 @@
     flex-grow: 1;
 }
 
-.deal-content h3 {
-    margin: 0;
-    font-size: 18px;
+.deal-content h2 {
+    font-size: 14px;
+    color:#555;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .deal-content p {
@@ -37,16 +57,278 @@
     margin: 5px 0;
 }
 
+#deal-price {
+    color:#000;
+    font-weight: bold;
+    /* color: #27ae60; */
+  }
+  
+  #deal-original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+  }
+
+  #deal-discount{
+    color: green; 
+    font-weight: bold;
+    font-size: 14px;
+  }
+  #deal_validity{
+    font-size: 20px;
+    margin-block: 15px;
+  }
 .deal-content .deal-timer {
     font-weight: bold;
     color: red;
 }
 
 .add-to-cart-btn {
-    background-color: #28a745;
-    color: white;
-    padding: 8px 12px;
+     /* background-color: #28a745;
+    color: white; */
+    padding: 8px 12px; 
+    /* border: none;
+    cursor: pointer;  */
+    /* border-radius: 5px; */
+}
+
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-icons{
+    opacity: 0;
+    z-index: 300;
+}
+
+.deal-card:hover .card-icons {
+    opacity: 1; /* Make the icons visible on hover */
+  }
+.wishlist-btn {
+    position: absolute;
+    top:1rem;
+    right:1rem;
+    background: none;
     border: none;
+    color:#555;
+    font-size: 16px;
     cursor: pointer;
+}
+
+.wishlist-btn:hover, .deal-quick-view-btn:hover {
+    color: #a71d2a;
+}
+
+.deal-quick-view-btn{
+    position: absolute;
+    top:4rem;
+    right:1rem;
+    background: none;
+    border: none;
+    color:#555;
+    font-size: 16px;
+    cursor: pointer;
+    /* z-index: 300; */
+}
+
+
+
+
+/* deals container */
+
+.deal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .deal-content {
+    background: #fff;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 900px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .deal-close-popup {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+    background-color: #690c11;
+    color:#999;
+    padding-inline: 10px;
+    border-radius: 50%;
+  }
+  
+  .deal-inner {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .deal-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  
+  .deal-right {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .deal-right h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .deal-right h3{
+    font-size: 18px;
+  }
+  .deal-right #deal-category{
+    font-size: 12px;
+    color:#555;
+  }
+  .rating {
+    font-size: 14px;
+    color: #f39c12;
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  #popup-deal-price {
+    color:#000;
+    font-weight: bold;
+    /* color: #27ae60; */
+  }
+  
+  #popup-deal-original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+  }
+
+  #popup-deal-discount{
+    color: green; 
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  /* #deal-price {
+    color: #27ae60;
+  }
+  
+  #deal-original-price {
+    text-decoration: line-through;
+    color: #999;
+  } */
+  
+  #deal-description {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #555;
+  }
+  
+  /* #deal-discount{
+    background-color: #dc3545;
+    color: #fff;
+   font-size: 12px;
+   padding: 2px 5px;
+   /* border-radius: 4px;  */
+   /* clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
+   padding-right: 5px;
+  } */ 
+  
+  .quantity-add {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .quantity-selector {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .quantity-selector button {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .quantity-selector button:hover {
+    background-color: #ddd;
+  }
+  
+  .quantity-selector input {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .action-buttons button {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  
+  
+  
+  
+  .deal-add-to-cart:disabled, .buy-now-btn:disabled{
+    background-color: #ccc;  /* Light gray background */
+    color: #666;             /* Darker gray text */
+    cursor: not-allowed;     /* Change cursor to indicate it's not clickable */
+    opacity: 0.5;            /* Reduce opacity to make it look faint */
+    border: 1px solid #bbb;
+  }
+  
+  
+  .no-scroll {
+    overflow: hidden;
 }

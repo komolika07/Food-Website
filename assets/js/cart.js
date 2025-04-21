@@ -25,3 +25,9 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
             });
     });
 });
+
+
+
+function checkoutPage(isCart){
+    window.location.href = `../view/checkout.php?isCart = ${isCart}`;
+}

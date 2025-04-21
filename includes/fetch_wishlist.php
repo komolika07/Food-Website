@@ -1,33 +1,47 @@
+
+
 <?php
 session_start();
 header('Content-Type: application/json');
 
-require_once 'db.php'; // Database connection file
-include 'auth.php'; // Authentication check file
+require_once 'db.php'; 
+include 'auth.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// Check if the user is logged in
 if (!isset($_SESSION['user-id'])) {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Please log in to view your wishlist.',
-        'data' => []
-    ]);
+    echo json_encode(['success' => false, 'message' => 'Please log in to view your wishlist.', 'data' => []]);
     exit;
 }
 
 $user_id = $_SESSION['user-id'];
 
-// Fetch wishlist items
 $query = "
-    SELECT w.product_id, p.name, p.rating, p.discounted_price, p.discount, p.price, p.image_path, p.status, p.description
+    SELECT w.product_id, w.type, 
+           CASE 
+               WHEN w.type = 'menu_item' THEN m.name
+               ELSE d.deal_name 
+           END AS name,
+           CASE 
+               WHEN w.type = 'menu_item' THEN m.image_path
+               ELSE d.deal_image 
+           END AS image_path,
+           CASE 
+               WHEN w.type = 'menu_item' THEN m.price
+               ELSE w.totalOriginalPrice
+           END AS price,
+            CASE 
+               WHEN w.type = 'menu_item' THEN m.status
+               ELSE d.status
+           END AS status,
+           CASE 
+               WHEN w.type = 'menu_item' THEN m.discounted_price
+               ELSE d.deal_price 
+           END AS discounted_price
     FROM wishlist w
-    JOIN menu_items p ON w.product_id = p.id
+    LEFT JOIN menu_items m ON w.product_id = m.id AND w.type = 'menu_item'
+    LEFT JOIN deals d ON w.product_id = d.id AND w.type = 'deal'
     WHERE w.user_id = ?
 ";
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param('i', $user_id);
 $stmt->execute();
@@ -40,9 +54,5 @@ if ($result->num_rows > 0) {
     }
 }
 
-echo json_encode([
-    'success' => true,
-    'message' => 'Wishlist fetched successfully.',
-    'data' => $wishlistItems
-]);
+echo json_encode(['success' => true, 'message' => 'Wishlist fetched successfully.', 'data' => $wishlistItems]);
 ?>

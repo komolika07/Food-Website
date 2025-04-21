@@ -30,6 +30,7 @@
                 <a href="#" class="submenu-toggle"><i class="fas fa-receipt"></i> Manage Orders</a>
                 <ul class="submenu">
                     <li><a href="view-orders.php">View Orders</a></li>
+                    <li><a href="view-order-history.php">View Order History</a></li>
                 </ul>
             </li>
             <li>

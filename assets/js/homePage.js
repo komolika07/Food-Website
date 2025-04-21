@@ -1,8 +1,4 @@
 
-
-
-
-
 //to display the navbar when fa-bar icon is clicked
 let navbar = document.querySelector('.navbar-items');
 let menuIcon = document.querySelector('#menu-icon');
@@ -223,8 +219,7 @@ if (closePopupBtn) {
 
 
 
-// Add To Cart functionality
-// Select the "Add to Cart" button in the popu
+
 
 // Event listener for the "Add to Cart" button in the quick view popup
 
@@ -289,84 +284,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
 })
 
 
-// addToCartButton.addEventListener('click', () => {
-//   const productId = addToCartButton.getAttribute('data-id');
-//   const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
-
-//   fetch('/includes/layout/add_to_cart.php', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/x-www-form-urlencoded',
-//     },
-//     body: new URLSearchParams({
-//       id: productId,
-//       quantity: quantity,
-//     }),
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       alert(data.message); // Display success/error message
-//       if (data.success) {
-//         console.log('Product successfully added to cart.');
-//         // Optionally update the cart icon or close the popup
-//       }
-//     })
-//     .catch((error) => console.error('Error adding to cart:', error));
-// });
-
-// // Optional: Close popup when clicking outside the content
-// popupContainer.addEventListener('click', (event) => {
-//   if (event.target === popupContainer) {
-//     popupContainer.style.display = 'none';
-//     document.body.classList.remove('no-scroll');
-//   }
-// });
-
-
-
-
-
-
-
-//quickview popup quantity add logic
-
-// document.querySelectorAll('.quantity-add').forEach((container) => {
-//   const decrementBtn = container.querySelector('.decrement-btn');
-//   const incrementBtn = container.querySelector('.increment-btn');
-//   const quantityInput = container.querySelector('.quantity-input');
-
-//   //Decrease quantity
-//   decrementBtn.addEventListener('click', () => {
-//     const currentValue = parseInt(quantityInput.value, 10);
-//     if (currentValue > 1) {
-//       quantityInput.value = currentValue - 1;
-//     }
-//   });
-
-//   //Increase quantity
-//   incrementBtn.addEventListener('click', () => {
-//     const currentValue = parseInt(quantityInput.value, 10);
-//     quantityInput.value = currentValue + 1;
-//   });
-
-//   //Restrict input to numbers greater than or equal to 1
-//   quantityInput.addEventListener('input', () => {
-//     if (quantityInput.value < 1) {
-//       quantityInput.value = 1;
-//     }
-//   });
-// });
-
-
-
-
-
-
-
+// feedback carousel
 
 const carousel = document.querySelector('.feedback-carousel');
 const prevBtn = document.querySelector('.prev-btn');

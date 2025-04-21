@@ -1,26 +1,20 @@
+
 <?php
 $pageTitle = "Menu";
 $pageStyles = [
-    "../assets/css/pages/checkout.css?v=1.0", // Menu-specific styles
+    "../assets/css/pages/checkout.css?v=2.0", // Menu-specific styles
 ];
 include '../includes/Layout/header.php';
 // include '../includes/Layout/Loginform.php';
 include '../includes/Layout/navbar.php';
 ?>
-<?php
-include "../includes/db.php";
-//   include "../includes/auth.php";
-?>
-<?php
-// Start the session
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<?php
 
 // Include your database connection
 include '../includes/db.php';
 include '../includes/auth.php';
-
-// Check if user is logged in
-
 
 // Get user ID from session
 $user_id = $_SESSION['user-id'];
@@ -73,39 +67,40 @@ if (isset($_SESSION['alert'])):
     unset($_SESSION['alert']); // Clear the alert message after showing it
 endif;
 ?>
+<?php
+$order = isset($_SESSION['buy_now_order']) ? $_SESSION['buy_now_order'] : null;
+
+?>
+
 
 <?php
 
-
-$user_id = $_SESSION['user-id'];
-
-// If "Buy Now" is triggered, fetch only that product
-if (isset($_GET['buy_now']) && isset($_GET['product_id']) && isset($_GET['quantity'])) {
+// Check if "Buy Now" is used; otherwise, load cart items
+if (isset($_GET['isCart']) && $_GET['isCart'] == 'false' && isset($_GET['product_id']) && isset($_GET['quantity'])) {
     $product_id = intval($_GET['product_id']);
     $quantity = intval($_GET['quantity']);
-
-    // Fetch product details
-    $query = "SELECT * FROM menu_items WHERE id = ?";
+    $isCart=$_GET['isCart'];
+    $query = "SELECT * FROM menu_items WHERE id = ? ";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $product_id);
     $stmt->execute();
     $result = $stmt->get_result();
-    $product = $result->fetch_assoc();
+    $order_items = $result->fetch_all(MYSQLI_ASSOC);
     $stmt->close();
 
-    if ($product) {
-        $product['quantity'] = $quantity;
-        $_SESSION['buy_now_item'] = $product;
+    // Assign the requested quantity to the fetched product
+    if (!empty($order_items)) {
+        $order_items[0]['quantity'] = $quantity; // Set the quantity for "Buy Now"
     }
-} else {
-    unset($_SESSION['buy_now_item']); // Remove session if "Buy Now" is not used
-}
+    foreach ($order_items as $item) {
+        $subtotal = $item['discounted_price'] * $item['quantity'];
+        $delivery_charge = 20;
+        $total_price = $subtotal + $delivery_charge;
+    }
 
-// Check if "Buy Now" is used; otherwise, load cart items
-if (isset($_SESSION['buy_now_item'])) {
-    $order_items = [$_SESSION['buy_now_item']];
+
 } else {
-    // Fetch all cart items if Buy Now is not used
+    // Fetch cart items only if Buy Now is NOT used
     $query = "SELECT c.*, p.* FROM cart c JOIN menu_items p ON c.product_id = p.id WHERE c.user_id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $user_id);
@@ -113,10 +108,23 @@ if (isset($_SESSION['buy_now_item'])) {
     $result = $stmt->get_result();
     $order_items = $result->fetch_all(MYSQLI_ASSOC);
     $stmt->close();
+    $total_price = isset($_SESSION['total_price']) ? $_SESSION['total_price'] : 0;
+    $subtotal = isset($_SESSION['subtotal']) ? $_SESSION['subtotal'] : 0;
+    $delivery_charge = isset($_SESSION['delivery_charge']) ? $_SESSION['delivery_charge'] : 0;
 }
+
+
+// Ensure Buy Now does not mix with cart items
+if (isset($_GET['buy_now'])) {
+    unset($_SESSION['buy_now_order']); // Reset Buy Now session to prevent mix-ups
+}
+
 ?>
 
-
+<input type="hidden" id="isCart" value="<?php echo htmlspecialchars($isCart)?>">
+<input type="hidden" id="total-price" value="<?php echo htmlspecialchars($total_price); ?>">
+<input type="hidden" id="quantity" value="<?php echo htmlspecialchars($quantity)?>">
+<input type="hidden" id="product_id" value="<?php echo htmlspecialchars($product_id); ?>">
 
 
 <!-- Alert msg  -->
@@ -145,9 +153,10 @@ if (isset($_SESSION['buy_now_item'])) {
                 <div class="section-content" id="login-details" style="display:none">
                     <p>Name: <?= $user['f_name'] . " " . $user['l_name'] ?> </p>
                     <p>Phone: <?= $user['phone_number'] ?> </p>
+                    <p>Email: <?= $user['email'] ?> </p>
                     <a href="">Logout and sign in to another account</a><br>
                     <button class="btn-primary primary-btn" id="continue-checkout-btn">Continue checkout</button>
-                    <p>Please note that upon clicking "Logout" you will be redirected to the login page</p>
+                    <p class="note">Please note that upon clicking "Logout" you will be redirected to the login page</p>
                 </div>
 
                 <!-- Section content that will show when the user clicks "change" -->
@@ -174,8 +183,11 @@ if (isset($_SESSION['buy_now_item'])) {
                     $default_address = null;  // No default address found
                 }
 
+                $default_address_id = $default_address['address_id'];
                 $stmt->close();
                 ?>
+                <input type="hidden" id="default-address-id" value="<?php echo htmlspecialchars($default_address_id); ?>">
+
                 <div class="default-address" id="default-address-display">
                     <?php if ($default_address): ?>
                         <strong><?php echo htmlspecialchars($default_address['user_name']); ?></strong>
@@ -243,26 +255,36 @@ if (isset($_SESSION['buy_now_item'])) {
                                                     class="quantity-input" name="quantity">
                                                 <button class="increment-btn">+</button>
                                             </div> -->
-                                           qty :  <?php echo htmlspecialchars($item['quantity']); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="order-summary-right">
                                     <h2 id="order-summary-category"><?php echo htmlspecialchars($item['category']); ?></h2>
-                                    <h2 id="order-summary-title"><?php echo htmlspecialchars($item['name']); ?> <span class="rating">( ⭐ <?php echo htmlspecialchars($item['rating']); ?>.0 )</span>
-                                       
-                                    </h2>
+                                    <h4 id="order-summary-title" style="font-size:1.2rem;">
+                                        <?php echo htmlspecialchars($item['quantity']); ?> X
+                                        <?php echo htmlspecialchars($item['name']); ?> <span class="rating">( ⭐
+                                            <?php echo htmlspecialchars($item['rating']); ?>.0 )</span>
+
+                                    </h4>
 
                                     <div class="price">
-                                        <span id="order-summary-price">₹
-                                            <?php echo htmlspecialchars($item['discounted_price']); ?></span>
-                                        <span id="order-summary-original-price">₹
-                                            <?php echo htmlspecialchars($item['price']); ?></span>
-                                        <span
-                                            id="order-summary-discount"><?php echo htmlspecialchars($item['discount']); ?>%</span>
+                                        <span id="order-summary-price">
+                                            ₹<?php echo htmlspecialchars($item['discounted_price']); ?>
+                                        </span>
+                                        <?php if ($item['discount'] > 0) { ?>
+                                            <span id="order-summary-original-price">
+                                                ₹<?php echo htmlspecialchars($item['price']); ?>
+                                            </span>
+                                            <span id="order-summary-discount">
+                                                <?php echo htmlspecialchars($item['discount']); ?>%
+                                            </span>
+                                        <?php } ?>
+
+
                                     </div>
+
                                     <div class="action-buttons">
-                                        <button class="Remove-btn" data-id="">Remove</button>
+                                        <button class="Remove-btn" data-id="">REMOVE</button>
                                     </div>
                                 </div>
                             </div>
@@ -277,36 +299,77 @@ if (isset($_SESSION['buy_now_item'])) {
                     <!-- <i class="fas fa-chevron-down toggle-icon"></i> -->
                 </h3>
                 <div class="sectionn-content">
-                    <div>
-                        <input type="radio" name="payment" checked> Razorpay (Online Payment)
+                    <div class="payment-option">
+                        <input type="radio" name="payment" value="cod" id="cod" checked onclick="showContinue('cod')">
+                        <label for="cod">💰 Cash on Delivery</label>
+                    <button id="continue-cod" class="continue-btn primary-btn">Confirm Order</button>
+
                     </div>
-                    <div>
-                        <input type="radio" name="payment"> Cash on Delivery
+                   
+
+                    <!-- Other Payment Methods -->
+                    <div class="payment-option">
+                        <input type="radio" name="payment" value="upi" id="upi" onclick="showContinue('upi')">
+                        <label for="upi">🟢 UPI</label>
+                        <p>Pay by any UPI app</p>    
+                    <button id="continue-upi" class="continue-btn primary-btn hidden">Continue</button>
+
                     </div>
+
+                    <div class="payment-option">
+                        <input type="radio" name="payment" value="wallet" id="wallet" onclick="showContinue('wallet')">
+                        <label for="wallet">💳 Wallets</label>
+                        <p>Use Paytm, PhonePe, etc.</p>
+                    <button id="continue-wallet" class="continue-btn primary-btn hidden">Continue</button>
+
+                    </div>
+
+                    <div class="payment-option">
+                        <input type="radio" name="payment" value="card" id="card" onclick="showContinue('card')">
+                        <label for="card">💳 Credit / Debit / ATM Card</label>
+                        <p>Add and secure cards as per RBI guidelines</p>
+                    <button id="continue-card" class="continue-btn primary-btn hidden">Continue</button>
+
+                    </div>
+
+                    <div class="payment-option">
+                        <input type="radio" name="payment" value="netbanking" id="netbanking"
+                            onclick="showContinue('netbanking')">
+                        <label for="netbanking">🏦 Net Banking</label>
+                        <p>Use UPI or cards for a better experience</p>
+                    <button id="continue-netbanking" class="continue-btn primary-btn hidden">Continue</button>
+
+                    </div>
+
+                    <div class="payment-option">
+                        <input type="radio" name="payment" value="emi" id="emi" onclick="showContinue('emi')">
+                        <label for="emi">📆 EMI (Easy Installments)</label>
+                    <button id="continue-emi" class="continue-btn primary-btn hidden">Continue</button>
+
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
 
         <div class="price-details">
             <h4>PRICE DETAILS</h4>
             <div class="price-row">
                 <span>Price (2 items)</span>
-                <span>₹450</span>
+                <span><?= number_format($subtotal, 2) ?></span>
             </div>
             <div class="price-row">
                 <span>Delivery Charges</span>
-                <span style="color: green;">FREE</span>
-            </div>
-            <div class="price-row">
-                <span>Platform Fee</span>
-                <span>₹3</span>
+                <span style="color: green;"><?= number_format($delivery_charge, 2) ?></span>
             </div>
             <hr>
             <div class="price-row" style="font-weight: bold;">
                 <span>Total Payable</span>
-                <span>₹453</span>
+                <span><?= number_format($total_price, 2) ?></span>
             </div>
-            <button class="btn-primary">Place Order</button>
+            <!-- <button class="btn-primary primary-btn">Place Order</button> -->
         </div>
     </div>
 

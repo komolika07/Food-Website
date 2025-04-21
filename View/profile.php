@@ -111,7 +111,8 @@ $stmt->close();
                     class="fas fa-calendar-alt"></i> Table Booking</li>
             <li onclick="showprofileSection('my-wishlist')" id="my-wishlist-tab"><i class="fa-solid fa-heart"></i> My
                 Wishlist</li>
-            <li onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
+            <li onclick="confirmLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
+
         </ul>
     </aside>
 
@@ -260,7 +261,9 @@ $stmt->close();
 
         <div id="my-orders" class="section">
             <h2>My Orders</h2>
-            <p>View your past orders and track your current orders here.</p>
+            <div class="order-display-container">
+
+            </div>
         </div>
 
         <div id="my-table-booking" class="section">
@@ -311,6 +314,20 @@ $stmt->close();
         <div id="my-wishlist" class="section">
             <h2>Wishlist</h2>
             <div id="wishlist-container" class="wishlist-container">
+                <table class="wishlist-table">
+                    <thead>
+                        <tr>
+                            <th>Products</th>
+                            <th>Price</th>
+                            <th>Availability</th>
+                            <th>Add To Cart</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="wishlist-table-body">
+                        <!-- Wishlist items will be dynamically inserted here -->
+                    </tbody>
+                </table>
 
             </div>
         </div>

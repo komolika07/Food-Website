@@ -22,7 +22,7 @@ include "../includes/auth.php";
 
 
 
-<!-- hero-session  -->
+<!----------------------- hero-session  ---------------------->
 
 <section class="hero-session container">
   <div class="carousel">
@@ -39,8 +39,6 @@ include "../includes/auth.php";
             experience straight to your doorstep elevate your home dining with a menu that caters to your taste</p>
           <a class="orderBtn primary-btn btn">Order Now</a>
           <a class="ExploreBtn secondary-btn btn">Explore Menu</a>
-
-          <!-- <div class="bgimg2" style="background-image: url(../Home/images/bgimg2.png);"></div>  -->
         </div>
       </div>
 
@@ -49,8 +47,6 @@ include "../includes/auth.php";
       <div class="slide flex">
         <div class="slider-image">
           <img src="../assets/images/slider_3.png" class="img">
-          <!-- <div class="bgimg" style="background-image: url(./homepage/images/bgimg.png);"></div>
-            <div class="bgimg3" style="background-image: url(./homepage/images/bgimg3.png);"></div> -->
         </div>
         <div class="msg"><i class="fa-solid fa-check"></i> Easy Reservation</div>
         <div class="content">
@@ -59,7 +55,6 @@ include "../includes/auth.php";
             your time and money</p>
           <a class="Reservebtn primary-btn btn">Reserve Table</a>
           <a class="takeAwayBtn  secondary-btn btn">Takeaway</a>
-          <!-- <div class="bgimg2" style="background-image: url(./homepage/images/bgimg2.png);"></div>           -->
         </div>
       </div>
 
@@ -67,8 +62,6 @@ include "../includes/auth.php";
       <div class="slide flex">
         <div class="slider-image">
           <img src="../assets/images/slider_2.png" class="img">
-          <!-- <div class="bgimg" style="background-image: url(./homepage/images/bgimg.png);"></div> -->
-          <!-- <div class="bgimg3" style="background-image: url(./homepage/images/bgimg3.png);"></div> -->
         </div>
         <div class="msg"><i class="fa-solid fa-check"></i> Best Deals</div>
         <div class="content">
@@ -76,7 +69,6 @@ include "../includes/auth.php";
           <p class="content-para">Place Your Order And Get 10% Discount Upto *₹150 with free shipping charges.<br>
             View More Deals</p>
           <a class="primary-btn DealsBtn btn">View Deals</a>
-          <!-- <div class="bgimg2" style="background-image: url(./homepage/images/bgimg2.png);"></div>           -->
         </div>
       </div>
 
@@ -87,7 +79,7 @@ include "../includes/auth.php";
 </section>
 
 
-<!-- how it works  -->
+<!-------------------------------- how it works  -------------------------------------------->
 
 <section class="order-steps container flex">
   <div class="context">
@@ -118,7 +110,7 @@ include "../includes/auth.php";
   </div>
 </section>
 
-<!-- quick pick category  -->
+<!-------------------------------- quick pick category  --------------------------------------------->
 <section class="quick-pick-menu container">
   <div class="category">
     <h4><b>Quick Pick</b></h4>
@@ -154,7 +146,7 @@ include "../includes/auth.php";
 
             $status = htmlspecialchars($row['status']);
             $isOutOfStock = strtolower($status) === 'out-of-stock'; // Convert to lowercase for consistency
-
+        
 
             echo '<div class="card" 
                                 data-id="' . htmlspecialchars($row['id']) . '"
@@ -283,6 +275,7 @@ include "../includes/auth.php";
 
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
+
             $status = htmlspecialchars($row['status']);
             $isOutOfStock = strtolower($status) === 'out-of-stock'; // Convert to lowercase for consistency
             echo '<div class="card" 
@@ -295,8 +288,8 @@ include "../includes/auth.php";
                                 data-image="../admin/' . htmlspecialchars($row['image_path']) . '" 
                                 data-description="' . htmlspecialchars($row['description']) . '"
                                 data-meal-op ="' . htmlspecialchars($row['meal_op']) . '"
-                                data-category ="' . htmlspecialchars($row['category']) . '"
-                                data-status="' . $status . '" >';
+                                data-category ="' . htmlspecialchars($row['category']) . '" 
+                                data-status="' . $status . '">';
 
             echo '<div class="card-icons">';
             echo '<button class="wishlist-btn" title="Add To Wishlist"><i class="fa fa-heart"></i></button>';
@@ -305,6 +298,7 @@ include "../includes/auth.php";
 
             $meal_op = htmlspecialchars($row['meal_op']);
             echo $meal_op === 'veg' ? '<div class="veg-meal-op">Veg</div>' : '<div class="nonveg-meal-op">Non-Veg</div>';
+
             echo '<img src="../admin/' . htmlspecialchars($row['image_path']) . '" alt="' . htmlspecialchars($row['name']) . '" />';
             echo '<div class="card-name-rating">';
             echo '<h3>' . htmlspecialchars($row['name']) . '</h3>';
@@ -325,14 +319,14 @@ include "../includes/auth.php";
             echo '<button class="add-to-cart primary-btn" data-id="' . $row['id'] . '" ' . ($isOutOfStock ? 'disabled' : '') . '>Add To Cart</button>';
 
             echo '</div>';
+            echo '</div>';
           }
         } else {
           echo "<p>No items found.</p>";
         }
         ?>
       </div>
-
-      <a href="" class="view-menu primary-btn">View Menu <i class="fa-solid fa-arrow-right"></i> </a>
+      <a href="" class="view-menu primary-btn">View Menu <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
 
@@ -403,7 +397,7 @@ include "../includes/auth.php";
   </div>
 </section>
 
-<!-- quick-view-popup -->
+<!--------------------------------------- quick-view-popup ------------------------------------>
 
 <div id="quickview-popup" class="popup-container" style="display: none;">
   <div class="popup-content">
@@ -415,13 +409,14 @@ include "../includes/auth.php";
         </div>
       </div>
       <div class="popup-right">
-        <h2 id="popup-category"></h2> <!-- category -->
-        <h2 id="popup-title"></h2> 
+        <input type="hidden" name="product-id" class="product-id">
+        <h2 id="popup-category"></h2>
+        <h2 id="popup-title"></h2>
         <p class="rating">
           ⭐ <span id="popup-rating"></span>.0
         </p>
         <div class="price">
-          <span id="popup-price"></span> 
+          <span id="popup-price"></span>
           <span id="popup-original-price"></span>
           <span id="popup-discount"></span>
         </div>
@@ -435,11 +430,11 @@ include "../includes/auth.php";
             <button class="increment-btn">+</button>
           </div>
           <div id="popup-status">
-            
+
           </div>
           <div class="action-buttons">
             <button class="popup-add-to-cart primary-btn" data-id="">Add To Cart</button>
-            <button class="buy-now-btn secondary-btn">Buy Now</button>
+            <button class="buy-now-btn secondary-btn" id="popup-buy-now" data-id="">Buy Now</button>
           </div>
         </div>
       </div>
@@ -447,7 +442,7 @@ include "../includes/auth.php";
   </div>
 </div>
 
-<!-- Deals section -->
+<!------------------------------------- Deals section ----------------------------------->
 
 <section class="Deals-section container">
   <h3>Our <b>Deals</b></h3>
@@ -463,7 +458,7 @@ include "../includes/auth.php";
   <button class="View-deals primary-btn">View Deals <i class="fa-solid fa-arrow-right"></i></button>
 </section>
 
-<!-- customer review  -->
+<!----------------------------------- customer review  ------------------------------------>
 
 <section class="customer-review container">
   <h3>Our <b>Happy Customers</b></h3>
@@ -499,17 +494,6 @@ include "../includes/auth.php";
 </section>
 
 
-<!-- feedback-form -->
-<!-- <section class="feedback-form container" id="feedback-form">
-  <h4>Let Us Know! <br> <b>Have You Enjoy Your Food!!</b></h4>
 
-  <div class="feedform">
-    <form>
-      <input type="text" class="comment" id="comment" placeholder="Your Comment">
-      <button class="Submit-btn">Submit</button>
-    </form>
-  </div>
-
-</section> -->
 
 <?php include '../includes/Layout/footer.php'; ?>

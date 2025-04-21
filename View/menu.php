@@ -27,17 +27,18 @@ function renderMenuSection($conn, $category, $meal_op)
             $status = htmlspecialchars($row['status']);
             $isOutOfStock = strtolower($status) === 'out-of-stock'; // Convert to lowercase for consistency
             ?>
-            <div class="card" data-id="<?= htmlspecialchars($row['id']) ?>" data-name="<?= htmlspecialchars($row['name']) ?>"
+            <div class="card menu-card" data-id="<?= htmlspecialchars($row['id']) ?>" data-name="<?= htmlspecialchars($row['name']) ?>"
                 data-rating="<?= htmlspecialchars($row['rating']) ?>" data-price="<?= htmlspecialchars($row['discounted_price']) ?>"
                 data-original-price="<?= htmlspecialchars($row['price']) ?>"
                 data-discount="<?= htmlspecialchars($row['discount']) ?>"
                 data-image="../admin/<?= htmlspecialchars($row['image_path']) ?>"
                 data-description="<?= htmlspecialchars($row['description']) ?>"
                 data-status= "<?= htmlspecialchars($row['status']) ?>"
+                data-type="menu_item"
                 data-meal-op="<?= htmlspecialchars($row['meal_op']) ?>" data-category="<?= htmlspecialchars($row['category']) ?>">
 
                 <div class="card-icons">
-                    <button class="wishlist-btn" title="Add To Wishlist"><i class="fa fa-heart"></i></button>
+                    <button class="wishlist-btn" data-type="menu_item" title="Add To Wishlist"><i class="fa fa-heart"></i></button>
                     <button class="quick-view-btn" title="Quick View"><i class="fa-solid fa-eye"></i></button>
                 </div>
 
@@ -151,6 +152,7 @@ function renderMenuSection($conn, $category, $meal_op)
         </div>
       </div>
       <div class="popup-right">
+        <input type="hidden" name="product-id" class="product-id">
         <h2 id="popup-category"></h2>
         <h2 id="popup-title"></h2>
         <p class="rating">
@@ -175,7 +177,7 @@ function renderMenuSection($conn, $category, $meal_op)
           </div>
           <div class="action-buttons">
             <button class="popup-add-to-cart primary-btn" data-id="">Add To Cart</button>
-            <button class="buy-now-btn secondary-btn" id="popup-buy-now" data-id="">Buy Now</button>
+            <button class="buy-now-btn secondary-btn" id="popup-buy-now" onclick="buyNow(this)" data-id="">Buy Now</button>
 
           </div>
         </div>

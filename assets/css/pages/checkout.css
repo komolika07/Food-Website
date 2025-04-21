@@ -21,6 +21,13 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+.note{
+background-color: #fff7e0;
+padding: 8px;
+font-size: 14px;
+border-radius: 5px;
+margin-bottom: 10px;
+}
 .section {
     border-bottom: 1px solid #ddd;
     padding: 20px 0;
@@ -94,14 +101,14 @@ body {
     border-radius: 5px;
     margin-block: 20px;
     cursor: pointer;
-    width: 30%;
+    /* width: 30%; */
 }
 .toggle-icon {
     transition: transform 0.3s;
 }
-.section.open .toggle-icon {
+/* .section.open .toggle-icon {
     /* transform: rotate(180deg); */
-}
+
 #toggle-item-remove{
     position: relative;
 }
@@ -221,8 +228,9 @@ textarea {
   
   .order-summary-right h2 {
     font-size: 20px;
-    font-weight: bold;
+    /* font-weight: bold; */
     margin-bottom: 10px;
+    color:#252424
   }
   .order-summary-right #order-summary-category{
     font-size: 12px;
@@ -243,7 +251,7 @@ textarea {
   }
   
   #order-summary-price {
-    color: #27ae60;
+    color: #1a6827;
   }
   
   #order-summary-original-price {
@@ -260,7 +268,7 @@ textarea {
    padding: 2px 5px;
    /* border-radius: 4px;  */
    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
-   padding-right: 5px;
+   /* padding-right: 5px; */
   }
   
   .quantity-add {
@@ -307,8 +315,73 @@ textarea {
     cursor: pointer;
     outline: none;
     border: none;
-    color:#000;
+    color:#2b2a2a;
+    background-color: #dedcdc;
+    padding:5px;
+    border-radius: 2px;
     font-size: 16px;
     font-weight: bold;
-    background: none;
+    /* background: none; */
   }
+
+
+  .btn-primary{
+    width:100%;
+  }
+
+
+  /* payment */
+  .payment-option {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.payment-option input {
+    margin-right: 10px;
+}
+
+.payment-option p {
+    font-size: 12px;
+    margin-left: auto;
+    color: gray;
+}
+
+.payment-option:hover {
+    background-color: #f8f8f8;
+}
+
+.cod-extra-charge {
+    background-color: #fff7e0;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.continue-btn {
+    width: 40%;
+    padding: 10px;
+    border: none;
+    /* background-color: #ff6600;
+    color: white; */
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: 2rem;
+}
+
+.continue-btn.hidden {
+    display: none;
+}
+
+.continue-btn:hover {
+    /* background-color: #e65c00; */
+}

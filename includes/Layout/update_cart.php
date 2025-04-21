@@ -2,11 +2,6 @@
 session_start();
 require_once '../db.php';
 include "../auth.php";
-// if (!isset($_SESSION['user-id'])) {
-//     header('Location: ../view/loginForm.php');
-//     exit();
-// }
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cart_id = $_POST['cart_id'];

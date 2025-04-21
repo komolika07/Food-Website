@@ -9,17 +9,22 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    /* background-color: rgb(246, 217, 179); */
 }
 
 /* Navbar */
 .navbar {
     position: relative;
-    background-color: #333;
+    top:20px;
+    /* margin-block: 1rem; */
+    background-color: transparent;
+    border: 1px solid white;
     color: white;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 50px;
 }
 
 .navbar .container{
@@ -37,9 +42,10 @@ body {
     padding: 1rem 1.2rem;
     font-size: 1rem;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 50px;
     position: absolute;
-    right: 1rem;
+    right: 3rem;
+    width: 7rem;
 }
 
 .navbar .login-btn:hover {
@@ -48,40 +54,104 @@ body {
 
 /* Hero Section */
 .hero {
-    background: url('https://source.unsplash.com/1600x900/?chinese,food') no-repeat center/cover;
+    padding:1rem;
+    /* background: url('https://source.unsplash.com/1600x900/?chinese,food') no-repeat center/cover; */
+    background: url(../images/indexBg.png);
     height: 100vh;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     color: #333;
     text-align: center;
-    padding: 0 2rem;
+    /* padding: 0 2rem; */
+    /* clip-path: ellipse(50% 100% at 80% 100%); */
+}
+.hero-content{
+    margin-top: 8rem;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 80px;
+    color: white;
     margin-bottom: 1rem;
+    font-family:cursive;
+    text-shadow: 2px 2px 2px rgba(188, 5, 5, 0.8);
 }
 
-.hero-content p {
+/* .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
+} */
+.hero-content .explore{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:50px;
 }
-
+.hero-content .explore span{
+    color: rgb(255, 255, 255);
+    font-size: 1.3rem;
+}
+.hero-content .explore .phone p{
+     color:rgb(255, 255, 255);
+     font-size: 1.3rem;
+}
+.hero-content .explore .phone span{
+    color:rgb(255, 255, 255);
+    font-size: 1.6rem;
+}
 .hero-content .explore-btn {
     background-color: #690c11;
     color: white;
     border: none;
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
+    padding: 0.8rem 3rem;
+    font-size: 1.2rem;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 50px;
     font-weight: bold;
 }
 
 .hero-content .explore-btn:hover {
     background-color: #52090d;
 }
+
+.index-content{
+    padding:5rem;
+    max-height: 500px;
+    background-color: #d5cac1;
+    width: 100%;
+   
+}
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: -50px; /* Adjust for overlap */
+}
+
+.card {
+    width: 220px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.card img{
+    width:80px;
+}
+.card:nth-child(even){
+    margin-top: 100px;
+}
+
+
+
+
+
+
 
 .footer {
     background-color: #333;

@@ -1,0 +1,199 @@
+.main{
+    min-height: 100vh;
+}
+.margin-inline{
+    margin-inline: 1rem;
+}
+.order-success-message{
+    width: 100%;
+    background-color: var(--light-grey);
+    padding:12px;
+    border-radius: 8px;
+}
+.order-subdetails{
+    margin-block: 2rem;
+    /* margin-inline: 1rem; */
+    width: 100%;
+    /* display: flex;
+    justify-content:space-around; */
+    
+}
+.order-subdetails-summary{
+    font-size: 18px ;
+    /* background-color: var(--light-grey); */
+    padding:12px;
+    color:black;
+    word-spacing: 3px;
+}
+
+.order-subdetails-summary b{
+    background-color: #efebeb;
+    padding:5px;
+    border-radius: 2px;
+}
+.order-details-product-table{
+    width:100%;
+}
+
+
+/* Table Container */
+.order-details {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    width: 100%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* align-items: center; */
+}
+
+/* Table Styles */
+.order-details-product-table {
+    width: 100%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    margin-top: 10px;
+    align-self: center;
+}
+
+/* Table Header */
+.order-details-product-table thead {
+    background : #c9c8c8; /* Orange Theme */
+    color: #333;
+}
+
+.order-details-product-table th {
+    padding: 12px;
+    text-align: left;
+    font-size: 18px;
+    border: 1px solid #4f4f4f;
+
+}
+
+/* Table Body */
+.order-details-product-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #c6c5c5;
+
+}
+
+/* Alternating Row Colors */
+.Subtotal, .total {
+    background: #f9f9f9;
+}
+
+/* Table Hover Effect */
+/* .order-details-product-table tbody tr:hover {
+    background: #ffebcc;
+    transition: 0.3s ease;
+} */
+
+.billing-details{
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.billing-details h4{
+    margin-bottom: 2rem;
+}
+.billing-details hr{
+    color:#c2bfbf !important;
+}
+.billing-Address{
+    margin-top: 2rem;
+    margin-left:2rem;
+}
+
+.billing-Address p{
+    font-weight: bold;
+    color:rgb(106, 102, 102)
+}
+.email-field{
+    margin-top: 2rem;
+}
+
+.dl-btn{
+    margin-block:2rem;
+}
+
+
+
+
+
+
+
+
+
+
+.order-tracker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: gray; /* Default gray */
+}
+
+/* Line Styles */
+.line {
+    width: 50px;
+    height: 5px;
+    background-color: gray;
+}
+
+/* Green for completed steps */
+.completed .circle {
+    background-color: green;
+}
+
+.completed-line {
+    background-color: green;
+}
+
+/* Red for cancelled */
+.cancelled .circle {
+    background-color: red;
+}
+
+.cancelled-line {
+    background-color: red;
+}
+
+/* Remove last line after Delivered if order is not cancelled */
+.order-tracker .line:last-of-type {
+    display: none;
+}
+
+/* Show red line after Delivered if order is cancelled */
+.order-tracker .cancelled ~ .line {
+    display: block;
+    background-color: red;
+}
+

@@ -16,20 +16,18 @@ if (!isset($_SESSION['user-id'])) {
 
 $user_id = $_SESSION['user-id'];
 $product_id = isset($_POST['id']) ? (int) $_POST['id'] : 0;
+$type = isset($_POST['type']) ? $_POST['type'] : '';
 
 // Validate product ID
-if (!$product_id) {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Invalid product ID.',
-    ]);
+if (!$product_id || !in_array($type, ['menu_item', 'deal'])) {
+    echo json_encode(['success' => false, 'message' => 'Invalid product details.']);
     exit;
 }
 
 // Remove the product from the wishlist
-$delete_query = "DELETE FROM wishlist WHERE user_id = ? AND product_id = ?";
+$delete_query = "DELETE FROM wishlist WHERE user_id = ? AND product_id = ? AND type=?";
 $stmt = $conn->prepare($delete_query);
-$stmt->bind_param('ii', $user_id, $product_id);
+$stmt->bind_param('iis', $user_id, $product_id,$type);
 
 if ($stmt->execute()) {
     echo json_encode([
