@@ -1,2 +1,2 @@
 ### Home Page
-![Home Page](screenshots/HomePage.png)
+![Home Page](screenshot/HomePage.png)
