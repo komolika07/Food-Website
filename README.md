@@ -41,5 +41,29 @@
 ![Manage Address Page](screenshot/ManageAddress.png)
 
 
+### Admin Panel
+### Dashboard page
+![Dashboard Page](screenshot/Dashboard.png)
+
+### Manage Menu Page
+![Manage Menu Page](screenshot/ManageMenu.png)
+
+### View Menu Page
+![View Menu Page](screenshot/ViewAddedMenu.png)
+
+### Manage Orders Page
+![Manage Orders Page](screenshot/ManageOrder.png)
+
+### Order History Page
+![Order History Page](screenshot/OrderHistory.png)
+
+### Manage Table Booking Page
+![Table Booking Page](screenshot/ManageTableBooking.png)
+
+### Manage FeedBack Page
+![Manage feedback Page](screenshot/ManageFeedBack.png)
+
+
+
 
 
