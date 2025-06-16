@@ -31,6 +31,15 @@
 ### Order Summary Page
 ![order Summary Page](screenshot/OrderSummary.png)
 
+### Profile Page
+![Profile Page](screenshot/Profile.png)
+
+### wishlist Page
+![Wishlist Page](screenshot/wishlist.png)
+
+### Manage Address Page
+![Manage Address Page](screenshot/ManageAddress.png)
+
 
 
 
