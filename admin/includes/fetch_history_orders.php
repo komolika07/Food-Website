@@ -56,7 +56,7 @@ if ($result->num_rows > 0) {
         echo "<div class='order-summary'>";
         echo "<strong>Order #" . $row['order_id'] . "</strong>";
         echo "<span class='customer-name'>" . $row['f_name'] . " " . $row['l_name'] . "</span>";
-        echo "<span class='price'>$" . number_format($row['total_price'], 2) . "</span>";
+        echo "<span class='price'>₹" . number_format($row['total_price'], 2) . "</span>";
         echo "<span class='status $statusClass'>". $row['order_status']."</span>";
         echo "<button class='toggle-button' onclick='toggleDetails(this)'><i class='fa-solid fa-eye'></i></button>";
         echo "</div>";
@@ -87,7 +87,7 @@ if ($result->num_rows > 0) {
                 echo "<span class='menu-name'>" . htmlspecialchars($menu['name']) . "</span>";
                 echo "<span class='menu-quantity'>x" . intval($menu['quantity']) . "</span>";
                 echo "</div>";
-                echo "<span class='menu-price'>+$" . number_format($menu['discounted_price'], 2) . "</span>";
+                echo "<span class='menu-price'>+₹" . number_format($menu['discounted_price'], 2) . "</span>";
                 echo "</div>";
             }
             echo "</div>";
@@ -97,7 +97,7 @@ if ($result->num_rows > 0) {
 
         echo "<p><strong>Order Status:</strong> <span class='status $statusClass'>" . ucfirst($row['order_status']) . "</span></p>";
         echo "<p><strong>Payment Status:</strong> " . ucfirst($row['payment_status']) . "</p>";
-        echo "<p><strong>Total Price:</strong> <span class='total-price'>$" . number_format($row['total_price'], 2) . "</span></p>";
+        echo "<p><strong>Total Price:</strong> <span class='total-price'>₹" . number_format($row['total_price'], 2) . "</span></p>";
         echo "<p><strong>Delivered By: </strong>" . (!empty($row['name']) ? $row['name'] : "Not Assigned") . "</p>";
 
         echo "</div>";

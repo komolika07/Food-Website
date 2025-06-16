@@ -33,14 +33,14 @@
                     <li><a href="view-order-history.php">View Order History</a></li>
                 </ul>
             </li>
-            <li>
+            <!-- <li>
                 <a href="#" class="submenu-toggle"><i class="fas fa-users"></i> Manage Users</a>
                 <ul class="submenu">
                     <li><a href="add-user.php">Add User</a></li>
                     <li><a href="edit-user.php">Edit User</a></li>
                     <li><a href="delete-user.php">Delete User</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li>
                 <a href="#" class="submenu-toggle"><i class="fas fa-calendar-alt"></i> Manage Table Reservation</a>
                 <ul class="submenu">
@@ -59,7 +59,7 @@
                 <a href="#" class="submenu-toggle"><i class="fas fa-shipping-fast"></i> Manage Delivery</a>
                 <ul class="submenu">
                     <li><a href="view-drivers.php">View Drivers</a></li>
-                    <li><a href="delivery-status.php">View Delivery Status</a></li>
+                    <!-- <li><a href="delivery-status.php">View Delivery Status</a></li> -->
                 </ul>
             </li>
         </ul>
@@ -68,13 +68,3 @@
 </main>
 
     
-
-
-
-    <!-- Main Content -->
-    <!-- <div class="main-content">
-        <h1>Welcome to the Admin Dashboard</h1>
-        <p>Manage your website content and settings from here.</p>
-    </div> -->
-
-    <!-- Font Awesome for icons -->

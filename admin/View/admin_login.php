@@ -18,11 +18,10 @@ unset($_SESSION['message']); // Clear the message after displaying it
 
 
 <body>
-<!-- admin-form -->
+    <!-- admin-form -->
     <div class="main">
 
         <section class="Admin-form-section">
-
             <div class="Admin-content">
                 <img src="../Assets/images/logo.png">
                 <span>WELCOME!!</span>

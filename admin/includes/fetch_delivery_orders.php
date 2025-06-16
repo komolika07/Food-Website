@@ -1,5 +1,16 @@
 <?php
 include 'db.php'; // Include database connection
+// Ensure that the session contains the delivery boy ID
+if (!isset($_SESSION['id'])) {
+    // Handle the case where the session variable is not set (e.g., redirect to login)
+    header('Location: login.php'); // Redirect to login page if not logged in
+    exit();
+}
+// Get the selected status from the GET request or default to 'All'
+$status = isset($_GET['status']) ? $_GET['status'] : 'All';
+
+// Get the delivery boy's ID from the session
+$deliveryBoyId = $_SESSION['id']; // Ensure the session has the delivery boy ID
 
 $status = $_GET['status'];
 $today = date('Y-m-d'); // Get today's date
@@ -10,17 +21,17 @@ if ($status == "All") {
             FROM orders o
             JOIN user_form u ON o.user_id = u.user_id
             JOIN user_addresses a ON o.address_id = a.address_id
-            WHERE DATE(o.created_at) = ?";
+            WHERE DATE(o.created_at) = ? AND o.delivery_boy_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $today);
+    $stmt->bind_param("si", $today, $deliveryBoyId);
 } else {
     $sql = "SELECT o.*, u.*, a.*
             FROM orders o
             JOIN user_form u ON o.user_id = u.user_id
             JOIN user_addresses a ON o.address_id = a.address_id
-            WHERE o.order_status = ? AND DATE(o.created_at) = ?";
+            WHERE o.order_status = ? AND DATE(o.created_at) = ? AND o.delivery_boy_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $status, $today);
+    $stmt->bind_param("ssi", $status, $today, $deliveryBoyId);
 }
 $stmt->execute();
 $result = $stmt->get_result();
