@@ -43,7 +43,7 @@
 
 ### Admin Panel
 ### Dashboard page
-![Dashboard Page](screenshot/Dashboard.png)
+![Dashboard Page](screenshot/dashboard.png)
 
 ### Manage Menu Page
 ![Manage Menu Page](screenshot/ManageMenu.png)
