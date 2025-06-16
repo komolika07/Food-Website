@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$username = "Your username";
-$password = "Your password";
-$dbname = "your database name";
+$username = "root";
+$password = "";
+$dbname = "food_delivery";
 
 $conn = new mysqli($host, $username, $password, $dbname);
 
