@@ -1,3 +1,12 @@
+### Landing Page
+![Landing Page](screenshot/landingPage.png)
+
+### Login Page
+![Login Page](screenshot/Login.png)
+
+### Register Page
+![Register Page](screenshot/Register.png)
+
 ### Home Page
 ![Home Page](screenshot/HomePage.png)
 
