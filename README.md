@@ -43,7 +43,7 @@
 
 ### Admin Panel
 ### Dashboard page
-![Dashboard Page](screenshot/Dashboard.png)
+![Dashboard Page](screenshot/dashboard.png)
 
 ### Manage Menu Page
 ![Manage Menu Page](screenshot/ManageMenu.png)
@@ -61,7 +61,7 @@
 ![Table Booking Page](screenshot/ManageTableBooking.png)
 
 ### Manage FeedBack Page
-![Manage feedback Page](screenshot/ManageFeedBack.png)
+![Manage feedback Page](screenshot/manageFeedBack.png)
 
 
 
